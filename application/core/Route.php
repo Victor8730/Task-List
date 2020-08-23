@@ -26,7 +26,7 @@ class Route
     public function __construct()
     {
         $this->controllerName = 'Main';
-        $this->actionName = 'index';
+        $this->actionName = 'Index';
     }
 
     /**
@@ -35,18 +35,25 @@ class Route
     public function start(): void
     {
         if (!empty($_SERVER['REQUEST_URI'])) {
-            if(strpos($_SERVER['REQUEST_URI'], '?') == true){
+            if (strpos($_SERVER['REQUEST_URI'], '?') == true) {
                 $routes = explode('/', strstr($_SERVER['REQUEST_URI'], '?', true));
-            }else{
+            } else {
                 $routes = explode('/', $_SERVER['REQUEST_URI']);
             }
+            $arrRoutes = array_diff($routes, ['']);
+            $arrRoutes = array_reverse($arrRoutes);
 
-            if (!empty($routes[1])) {
-                $this->controllerName = ucfirst($routes[1]);
-            }
+            try {
+                $this->checkFile('application/controllers/Controller' . $arrRoutes[0] . '.php', false);
+                $this->controllerName = $arrRoutes[0];
+            } catch (NotExistFileException $e) {
+                try {
+                    $this->checkFile('application/controllers/Controller' . $arrRoutes[1] . '.php', false);
+                    $this->controllerName = $arrRoutes[1];
+                    $this->actionName = $arrRoutes[0];
+                } catch (NotExistFileException $e) {
 
-            if (!empty($routes[2])) {
-                $this->actionName = $routes[2];
+                }
             }
         }
 
@@ -60,9 +67,11 @@ class Route
 
         $controller = null;
 
-        try{
-            $controller = new $controllerName;
-        }catch(NotExistClassException $e){
+        try {
+            if (class_exists($controllerName)) {
+                $controller = new $controllerName;
+            }
+        } catch (NotExistClassException $e) {
             self::ErrorPage404();
         }
 

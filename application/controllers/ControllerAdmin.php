@@ -38,7 +38,7 @@ class ControllerAdmin extends Controller
     /**
      * Check the data and try to log in
      */
-    public function actionAuth()
+    public function actionAuth():void
     {
         $dataAuth = $this->validate();
         if ($this->input->isErrors() === false) {
@@ -57,8 +57,9 @@ class ControllerAdmin extends Controller
     /**
      * Log out of the account
      */
-    public function actionLogOut()
+    public function actionLogOut():void
     {
         $this->auth->out();
+        echo json_encode(['success' => true, 'error' => false]);
     }
 }

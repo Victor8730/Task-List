@@ -1,5 +1,5 @@
 <div class="col-md-12 text-center">
-    <form class="form-signin needs-validation" novalidate method="post" action="admin/auth">
+    <form class="form-signin needs-validation" novalidate method="post" action="#ROOT#/admin/auth">
         <i class="fa fa-shield fa-3x" aria-hidden="true"></i>
         <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
         <label for="inputName" class="sr-only">Name</label>

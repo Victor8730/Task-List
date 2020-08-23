@@ -1,5 +1,5 @@
 <h4 class="mb-3">Adding a task</h4>
-<form class="needs-validation form-task" novalidate method="post" action="/add/#action#">
+<form class="needs-validation form-task" novalidate method="post" action="#ROOT#/add/#action#">
     <div class="mb-3">
         <label for="username">Name <span class="text-muted">*</span></label>
         <div class="input-group">
