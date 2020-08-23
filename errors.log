@@ -1,0 +1,129 @@
+Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Route.php
+Line with problem: 56 | Method action5Index not exist in controller controllers\ControllerMain
+Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Route.php Line with problem: 56 | Method action5Index not exist in controller controllers\ControllerMain
+Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Route.php | Line with problem: 56 | Method action5Index not exist in controller controllers\ControllerMain
+Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Route.php | Line with problem: 56Method action5Index not exist in controller controllers\ControllerMain
+Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Route.php | Line with problem: 56 | Method action5Index not exist in controller controllers\ControllerMain
+Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Route.php | Line with problem: 51 | Method action5Index not exist in controller controllers\ControllerMain
+Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Route.php | Line with problem: 49 | Method action5Index not exist in controller controllers\ControllerMain
+Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\View.php Line with problem: 44/ file template 'application/views/1template_view.php' not exist!
+Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\View.php Line with problem: 38 | file template 'application/views/1template_view.php' not exist!
+Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Route.php | Line with problem: 64 | Method actionAddtask not exist in controller controllers\ControllerAdd
+Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Route.php | Line with problem: 64 | Method actionAddtask not exist in controller controllers\ControllerAdd
+Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Db.php | Line with problem: 36 | 
+Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Db.php | Line with problem: 36 | 
+ 2020-08-20 19:05:36 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Db.php | Line with problem: 36 | 
+ 2020-08-20 19:06:12 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Db.php | Line with problem: 36 | SQLSTATE[HY000] [1049] Unknown database 'task_manager1'
+ 2020-08-20 19:07:29 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Db.php | Line with problem: 34 | SQLSTATE[HY000] [1049] Unknown database 'task_manager1'
+2020-08-20 20:00:05 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\File.php Line with problem: 20 | file template 'application/controllers/Addawdawd' not exist!
+2020-08-20 20:01:22 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\File.php Line with problem: 20 | file template 'application\controllers\ControllerAddawdawd' not exist!
+2020-08-20 20:01:36 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\File.php Line with problem: 20 | file template 'application\controllers\ControllerAdd' not exist!
+2020-08-20 20:02:05 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\File.php Line with problem: 20 | file template 'application/controllers/Add' not exist!
+2020-08-20 20:02:26 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\File.php Line with problem: 20 | file template 'application/controllers/ControllerAdd' not exist!
+2020-08-20 20:03:47 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\File.php Line with problem: 20 | file template 'application/controllers/ControllerAddawdawd.php' not exist!
+2020-08-20 20:04:40 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\File.php Line with problem: 20 | file template 'application/controllers/ControllerAddawdawd.php' not exist!
+2020-08-20 20:04:50 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\File.php Line with problem: 20 | file template 'application/controllers/ControllerAddawdawd.php' not exist!
+2020-08-20 20:05:14 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\File.php Line with problem: 20 | file template 'application/controllers/ControllerAddawdawd.php' not exist!
+2020-08-20 20:06:57 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\File.php Line with problem: 20 | file template 'application/controllers/ControllerGet.php' not exist!
+2020-08-20 20:07:52 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Route.php | Line with problem: 75 | Method actionEdit not exist in controller controllers\ControllerAdd
+2020-08-20 20:08:54 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Route.php | Line with problem: 75 | Method actionEdit not exist in controller controllers\ControllerAdd
+2020-08-20 20:11:20 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\File.php Line with problem: 20 | file template 'application/controllers/ControllerAddawdawd.php' not exist!
+2020-08-20 20:11:28 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\File.php Line with problem: 20 | file template 'application/controllers/ControllerAaaaa.php' not exist!
+2020-08-20 20:15:27 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\File.php Line with problem: 21 | file template 'application/controllers/ControllerAaaaa.php' not exist!
+2020-08-20 20:18:17 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Check.php Line with problem: 21 | file template 'application/controllers/ControllerAaaaa.php' not exist!
+2020-08-20 21:04:55 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Check.php Line with problem: 21 | file template 'application/controllers/ControllerPost.php' not exist!
+2020-08-20 21:05:08 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Check.php Line with problem: 21 | file template 'application/controllers/ControllerPost.php' not exist!
+2020-08-20 21:05:34 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Check.php Line with problem: 21 | file template 'application/controllers/ControllerPost.php' not exist!
+2020-08-20 21:05:50 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Check.php Line with problem: 21 | file template 'application/controllers/ControllerPost.php' not exist!
+2020-08-20 21:42:52 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Check.php Line with problem: 54 | Input data victor8730@ukr.net not valid!
+2020-08-20 23:36:10 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Check.php Line with problem: 23 | file template 'application/controllers/Controller?sort=.php' not exist!
+2020-08-20 23:36:37 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Check.php Line with problem: 23 | file template 'application/controllers/Controller?sort=name.php' not exist!
+2020-08-20 23:40:10 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Check.php | Line with problem: 44 | Method actionIndex?sort=name not exist in controller controllers\ControllerMain
+2020-08-20 23:40:30 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Check.php | Line with problem: 44 | Method actionIndex?sort=name not exist in controller controllers\ControllerMain
+2020-08-20 23:55:59 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Check.php | Line with problem: 44 | Method actionIndex?sort=name not exist in controller controllers\ControllerMain
+2020-08-20 23:56:00 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Check.php | Line with problem: 44 | Method actionIndex?sort=name not exist in controller controllers\ControllerMain
+2020-08-20 23:56:03 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Check.php | Line with problem: 44 | Method actionIndex?sort=name not exist in controller controllers\ControllerMain
+2020-08-20 23:56:18 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Check.php | Line with problem: 44 | Method actionIndex?sort=name not exist in controller controllers\ControllerMain
+2020-08-20 23:56:31 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Check.php | Line with problem: 44 | Method actionIndex?sort=name not exist in controller controllers\ControllerMain
+2020-08-20 23:56:57 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Check.php | Line with problem: 44 | Method actionIndex?sort=name not exist in controller controllers\ControllerMain
+2020-08-20 23:58:14 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Check.php | Line with problem: 44 | Method actionIndex?sort=name not exist in controller controllers\ControllerMain
+2020-08-20 23:58:15 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Check.php | Line with problem: 44 | Method actionIndex?sort=name not exist in controller controllers\ControllerMain
+2020-08-21 00:01:19 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Check.php | Line with problem: 44 | Method actionIndex?sort=name not exist in controller controllers\ControllerMain
+2020-08-21 00:01:20 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Check.php | Line with problem: 44 | Method actionIndex?sort=name not exist in controller controllers\ControllerMain
+2020-08-21 00:01:20 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Check.php | Line with problem: 44 | Method actionIndex?sort=name not exist in controller controllers\ControllerMain
+2020-08-21 00:01:20 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Check.php | Line with problem: 44 | Method actionIndex?sort=name not exist in controller controllers\ControllerMain
+2020-08-21 00:02:10 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Check.php | Line with problem: 44 | Method actionIndex?sort=name not exist in controller controllers\ControllerMain
+2020-08-21 00:02:11 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Check.php | Line with problem: 44 | Method actionIndex?sort=name not exist in controller controllers\ControllerMain
+2020-08-21 00:02:11 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Check.php | Line with problem: 44 | Method actionIndex?sort=name not exist in controller controllers\ControllerMain
+2020-08-21 00:02:11 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Check.php | Line with problem: 44 | Method actionIndex?sort=name not exist in controller controllers\ControllerMain
+2020-08-21 00:03:25 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Check.php | Line with problem: 44 | Method actionIndex?sort=name not exist in controller controllers\ControllerMain
+2020-08-21 00:10:36 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Check.php | Line with problem: 44 | Method actionIndex?sort=name not exist in controller controllers\ControllerMain
+2020-08-21 00:10:37 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Check.php | Line with problem: 44 | Method actionIndex?sort=name not exist in controller controllers\ControllerMain
+2020-08-21 00:22:27 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Check.php | Line with problem: 44 | Method actionIndex?sort=name not exist in controller controllers\ControllerMain
+2020-08-21 00:22:28 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Check.php | Line with problem: 44 | Method actionIndex?sort=name not exist in controller controllers\ControllerMain
+2020-08-21 00:22:28 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Check.php | Line with problem: 44 | Method actionIndex?sort=name not exist in controller controllers\ControllerMain
+2020-08-21 00:22:38 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Check.php | Line with problem: 44 | Method actionIndex?sort=name not exist in controller controllers\ControllerMain
+2020-08-21 00:22:57 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Check.php | Line with problem: 44 | Method actionIndex?sort=name not exist in controller controllers\ControllerMain
+2020-08-21 00:23:12 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Check.php | Line with problem: 44 | Method actionIndex?sort=name not exist in controller controllers\ControllerMain
+2020-08-21 00:23:29 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Check.php | Line with problem: 44 | Method actionIndex?sort=name not exist in controller controllers\ControllerMain
+2020-08-21 00:23:35 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Check.php | Line with problem: 44 | Method actionIndex?sort=name not exist in controller controllers\ControllerMain
+2020-08-21 00:23:39 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Check.php | Line with problem: 44 | Method actionIndex?sort=name not exist in controller controllers\ControllerMain
+2020-08-21 00:23:48 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Check.php | Line with problem: 44 | Method actionIndex?sort=name not exist in controller controllers\ControllerMain
+2020-08-21 00:27:50 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Check.php Line with problem: 23 | file template 'application/controllers/ControllerO.php' not exist!
+2020-08-21 00:29:07 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Check.php Line with problem: 23 | file template 'application/controllers/ControllerO.php' not exist!
+2020-08-21 00:29:08 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Check.php Line with problem: 23 | file template 'application/controllers/ControllerO.php' not exist!
+2020-08-21 00:29:08 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Check.php Line with problem: 23 | file template 'application/controllers/ControllerO.php' not exist!
+2020-08-21 01:09:21 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Input.php Line with problem: 63 | Input data email not valid!
+2020-08-21 01:10:07 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Input.php Line with problem: 63 | Post or Get data email not valid!
+2020-08-21 01:11:24 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Input.php Line with problem: 63 | Post or Get data  not valid!
+2020-08-21 01:11:24 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Input.php Line with problem: 44 | Post or Get data  not valid!
+2020-08-21 01:11:31 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Input.php Line with problem: 63 | Post or Get data  not valid!
+2020-08-21 01:11:31 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Input.php Line with problem: 44 | Post or Get data  not valid!
+2020-08-21 01:12:04 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Input.php Line with problem: 63 | Post or Get data  not valid!
+2020-08-21 01:12:04 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Input.php Line with problem: 44 | Post or Get data  not valid!
+2020-08-21 01:12:05 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Input.php Line with problem: 63 | Post or Get data  not valid!
+2020-08-21 01:12:05 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Input.php Line with problem: 44 | Post or Get data  not valid!
+2020-08-21 01:12:19 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Input.php Line with problem: 44 | Post or Get data  not valid!
+2020-08-21 01:12:19 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Input.php Line with problem: 44 | Post or Get data  not valid!
+2020-08-21 01:12:20 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Input.php Line with problem: 44 | Post or Get data  not valid!
+2020-08-21 01:12:20 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Input.php Line with problem: 44 | Post or Get data  not valid!
+2020-08-21 01:12:20 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Input.php Line with problem: 44 | Post or Get data  not valid!
+2020-08-21 01:12:20 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Input.php Line with problem: 44 | Post or Get data  not valid!
+2020-08-21 01:16:11 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Input.php Line with problem: 44 | Post or Get data  not valid!
+2020-08-21 01:16:11 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Input.php Line with problem: 44 | Post or Get data  not valid!
+2020-08-21 01:16:11 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Input.php Line with problem: 44 | Post or Get data  not valid!
+2020-08-21 01:16:11 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Input.php Line with problem: 44 | Post or Get data  not valid!
+2020-08-21 01:16:12 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Input.php Line with problem: 44 | Post or Get data  not valid!
+2020-08-21 01:16:12 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Input.php Line with problem: 44 | Post or Get data  not valid!
+2020-08-21 01:16:12 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Input.php Line with problem: 44 | Post or Get data  not valid!
+2020-08-21 01:16:12 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Input.php Line with problem: 44 | Post or Get data  not valid!
+2020-08-21 01:16:26 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Input.php Line with problem: 44 | Post or Get data  not valid!
+2020-08-21 01:16:26 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Input.php Line with problem: 44 | Post or Get data  not valid!
+2020-08-21 01:17:00 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Input.php Line with problem: 44 | Post or Get data  not valid!
+2020-08-21 01:17:00 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Input.php Line with problem: 44 | Post or Get data  not valid!
+2020-08-21 01:19:06 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Check.php | Line with problem: 44 | Method actionMain not exist in controller controllers\ControllerMain
+2020-08-21 01:19:12 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Check.php | Line with problem: 44 | Method actionMain not exist in controller controllers\ControllerMain
+2020-08-21 01:27:47 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Input.php Line with problem: 44 | Post or Get data  not valid!
+2020-08-21 09:28:10 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Check.php Line with problem: 23 | file template 'application/controllers/ControllerAuth.php' not exist!
+2020-08-21 09:29:14 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Check.php Line with problem: 23 | file template 'application/controllers/ControllerAuth.php' not exist!
+2020-08-21 10:23:46 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Input.php Line with problem: 44 | Post or Get data  not valid!
+2020-08-21 10:57:48 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Input.php Line with problem: 44 | Post or Get data  not valid!
+2020-08-21 11:27:02 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Input.php Line with problem: 44 | Post or Get data  not valid!
+2020-08-21 11:32:08 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Check.php | Line with problem: 44 | Method actionLogout=1 not exist in controller controllers\ControllerAdmin
+2020-08-21 11:41:39 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Check.php | Line with problem: 44 | Method actionEdit not exist in controller controllers\ControllerAdd
+2020-08-21 11:42:33 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Check.php | Line with problem: 44 | Method actionEdit not exist in controller controllers\ControllerAdd
+2020-08-21 16:54:36 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Input.php Line with problem: 44 | Post or Get data  not valid!
+2020-08-21 16:54:38 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Input.php Line with problem: 44 | Post or Get data  not valid!
+2020-08-21 16:56:57 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Input.php Line with problem: 44 | Post or Get data  not valid!
+2020-08-21 16:57:44 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Input.php Line with problem: 44 | Post or Get data  not valid!
+2020-08-21 16:58:29 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Input.php Line with problem: 63 | Post or Get data in.duawdawdawmkaawd not valid!
+2020-08-21 16:58:29 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Input.php Line with problem: 44 | Post or Get data  not valid!
+2020-08-21 16:59:27 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Input.php Line with problem: 63 | Post or Get data in.duawdawdawmkaawd not valid!
+2020-08-21 16:59:27 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Input.php Line with problem: 44 | Post or Get data  not valid!
+2020-08-21 16:59:40 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Input.php Line with problem: 63 | Post or Get data in.duawdawdawmkaawd not valid!
+2020-08-21 16:59:40 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Input.php Line with problem: 44 | Post or Get data  not valid!
+2020-08-22 11:00:12 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Check.php Line with problem: 23 | file template 'application/controllers/ControllerAwdawd.php' not exist!
+2020-08-22 11:00:19 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Check.php | Line with problem: 44 | Method actionAdad not exist in controller controllers\ControllerAdd
+2020-08-22 11:00:23 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Check.php Line with problem: 23 | file template 'application/controllers/ControllerAwdawd.php' not exist!
+2020-08-22 11:27:47 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Input.php Line with problem: 63 | Post or Get data dm@.ukr.net not valid!
+2020-08-22 12:38:29 : Script with problem: E:\Programs\OpenServer\domains\mvc1\application\core\Check.php | Line with problem: 43 | Method actionPage=2 not exist in controller controllers\ControllerMain
