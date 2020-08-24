@@ -25,8 +25,8 @@ class Route
      */
     public function __construct()
     {
-        $this->controllerName = 'Main';
-        $this->actionName = 'Index';
+        $this->controllerName = 'main';
+        $this->actionName = 'index';
     }
 
     /**
@@ -40,27 +40,34 @@ class Route
             } else {
                 $routes = explode('/', $_SERVER['REQUEST_URI']);
             }
+
             $arrRoutes = array_diff($routes, ['']);
             $arrRoutes = array_reverse($arrRoutes);
-
-            try {
-                $this->checkFile('application/controllers/Controller' . $arrRoutes[0] . '.php', false);
-                $this->controllerName = $arrRoutes[0];
-            } catch (NotExistFileException $e) {
+            if (count($arrRoutes) > 0) {
                 try {
-                    $this->checkFile('application/controllers/Controller' . $arrRoutes[1] . '.php', false);
-                    $this->controllerName = $arrRoutes[1];
-                    $this->actionName = $arrRoutes[0];
+                    $this->checkFile('application/controllers/Controller' . ucfirst($arrRoutes[0]) . '.php', false);
+                    $this->controllerName = $arrRoutes[0];
                 } catch (NotExistFileException $e) {
-
+                    try {
+                        if (!empty($arrRoutes[1])) {
+                            $this->checkFile('application/controllers/Controller' . ucfirst($arrRoutes[1]) . '.php',
+                                false);
+                            $this->controllerName = $arrRoutes[1];
+                            $this->actionName = $arrRoutes[0];
+                        } else {
+                            self::ErrorPage404();
+                        }
+                    } catch (NotExistFileException $e) {
+                        self::ErrorPage404();
+                    }
                 }
             }
         }
 
-        $controllerName = 'controllers\Controller' . $this->controllerName;
+        $controllerName = 'controllers\Controller' . ucfirst($this->controllerName);
 
         try {
-            $this->checkFile('application/controllers/Controller' . $this->controllerName . '.php', false);
+            $this->checkFile('application/controllers/Controller' . ucfirst($this->controllerName) . '.php', false);
         } catch (NotExistFileException $e) {
             self::ErrorPage404();
         }
@@ -89,9 +96,7 @@ class Route
      */
     public static function ErrorPage404(): void
     {
-        $host = 'http://' . $_SERVER['HTTP_HOST'] . '/';
-        header('HTTP/1.1 404 Not Found');
-        header("Status: 404 Not Found");
-        header('Location:' . $host . '404');
+        $host = 'http://' . $_SERVER['HTTP_HOST'] . '/404';
+        header('Location:' . $host);
     }
 }

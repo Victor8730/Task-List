@@ -68,7 +68,7 @@ class Db
         ?int $id = null,
         ?string $param = null,
         ?array $limit = null
-    ) {
+    ): ?array {
         $dbConnect = $this->connect();
 
         try {

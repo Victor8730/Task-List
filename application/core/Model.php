@@ -23,7 +23,7 @@ class Model extends Db
      * @param int $id
      * @return array
      */
-    public function getDataById(int $id): array
+    public function getDataById(int $id): ?array
     {
         $dataId = $this->load($id);
         return $dataId[0];
