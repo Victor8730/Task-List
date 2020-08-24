@@ -54,11 +54,8 @@ class Route
                                 false);
                             $this->controllerName = $arrRoutes[1];
                             $this->actionName = $arrRoutes[0];
-                        } else {
-                            self::ErrorPage404();
                         }
                     } catch (NotExistFileException $e) {
-                        self::ErrorPage404();
                     }
                 }
             }
