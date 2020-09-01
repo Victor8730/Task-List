@@ -1,0 +1,15 @@
+{% extends "template.twig" %}
+
+{% block content %}
+<div class="col-md-12 order-md-2">
+
+    {% if adm == 1 %}
+        {% include 'add/form.twig' %}
+    {% else %}
+        <div class="col-md-12 text-center"><i class="fa fa-key fa-3x" aria-hidden="true"></i>
+            <h3 class="h3 mb-3 font-weight-normal">You need to <a href="/admin" target="_blank">log in</a></h3>
+        </div>
+    {% endif %}
+
+</div>
+{% endblock %}

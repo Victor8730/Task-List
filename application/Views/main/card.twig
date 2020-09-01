@@ -1,0 +1,19 @@
+{% for task in dataList %}
+<div class="card mb-4 shadow-sm">
+    <div class="card-header">
+        <h4 class="my-0 font-weight-normal">{{ task.name }}</h4>
+    </div>
+    <div class="card-body">
+        <p><small class="text-muted">{{ task.email }}</small></p>
+        <p>{{ task.task }}</p>
+        {% if task.status == 1 %}
+            <i class="fa fa-check color-green" aria-hidden="true"></i>
+        {% else %}
+            <i class="fa fa-minus-circle" aria-hidden="true"></i>
+        {% endif %}
+        {% if adm == 1 %}
+            <a href="/add/edit/?id={{ task.id }}" class="btn btn-lg btn-block btn-outline-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+        {% endif %}
+    </div>
+</div>
+{% endfor %}
