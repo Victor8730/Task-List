@@ -2,7 +2,12 @@
 
 namespace Core;
 
-use Exceptions\{NotExistFileException, NotExistMethodException, NotExistClassException, NotValidInputException};
+use Exceptions\{FailedCopyException,
+    FailedCreateDirException,
+    NotExistFileException,
+    NotExistMethodException,
+    NotExistClassException,
+    NotValidInputException};
 
 class  Validator
 {
@@ -57,7 +62,7 @@ class  Validator
 
     /**
      * Email validation
-     * @param string $val
+     * @param string|null $val
      * @return string
      * @throws NotValidInputException
      */
@@ -105,7 +110,7 @@ class  Validator
     }
 
     /**
-     * checking if a method exists in the class
+     * Checking if a method exists in the class
      * @param object|null $controller
      * @param string $actionName
      * @throws NotExistMethodException
@@ -119,7 +124,7 @@ class  Validator
 
 
     /**
-     * checking if a class exists in the file controller
+     * Checking if a class exists
      * @param string $className
      * @throws NotExistClassException
      */
@@ -127,6 +132,33 @@ class  Validator
     {
         if (!class_exists($className)) {
             throw new NotExistClassException($className);
+        }
+    }
+
+    /**
+     * Try copy file from one location to another,
+     * if not luck then throw an exception FailedCopyException
+     * @param string $dirSource
+     * @param string $dirDest
+     * @throws FailedCopyException
+     */
+    protected function checkCopyFile(string $dirSource, string $dirDest): void
+    {
+        if (!copy($dirSource, $dirDest)) {
+            throw new FailedCopyException($dirSource);
+        }
+    }
+
+    /**
+     * We try to create a directory,
+     * if not luck then throw an exception FailedCreateDirException
+     * @param string $dirSource
+     * @throws FailedCreateDirException
+     */
+    protected function checkMakeDir(string $dirSource): void
+    {
+        if (!mkdir($dirSource)) {
+            throw new FailedCreateDirException($dirSource);
         }
     }
 }

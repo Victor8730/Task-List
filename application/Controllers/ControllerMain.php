@@ -34,13 +34,15 @@ class ControllerMain extends Controller
     {
         $sort = $_GET['sort'] ?? 'id';
         $order = $_GET['order'] ?? 'DESC';
+        $list = $_GET['list'] ?? 'list';
         $start = $_GET['start'] ?? 0;
-        $limit = $_GET['limit'] ?? 5;
+        $limit = $_GET['limit'] ?? 4;
         $filter = [];
 
         try {
             $sort = $this->validator->checkStr($sort);
             $order = $this->validator->checkStr($order);
+            $list = $this->validator->checkStr($list);
         } catch (NotValidInputException $e) {
             echo $e->getMessage();
         }
@@ -53,7 +55,7 @@ class ControllerMain extends Controller
             echo $e->getMessage();
         }
 
-        return ['sort' => $sort, 'order' => $order, 'filter' => $filter];
+        return ['sort' => $sort, 'list' => $list, 'order' => $order, 'filter' => $filter];
     }
 
     /**
@@ -70,7 +72,7 @@ class ControllerMain extends Controller
 
         for ($i = 1, $num = 0; $i <= $countPage; $i++, $num++) {
             $numPage = $num * $limit;
-            $elementPagination .= '<li class="page-item"><a class="page-link" href="/main/index?sort=' . $url['sort'] . '&order=' . $url['order'] . '&start=' . $numPage . '">' . $i . '</a></li>';
+            $elementPagination .= '<li class="page-item"><a class="page-link" href="/main/index?sort=' . $url['sort'] . '&list=' . $url['list'] . '&order=' . $url['order'] . '&start=' . $numPage . '">' . $i . '</a></li>';
         }
 
         return $elementPagination;
@@ -89,12 +91,13 @@ class ControllerMain extends Controller
             $dataList = $this->model->getData($sortData, $dataInputGet['filter']);
             $countDataRows = $this->model->getCountDataRows();
             $adm = $this->auth->isAuth();
-            $pagination = $this->createPagination($countDataRows,$dataInputGet);
+            $pagination = $this->createPagination($countDataRows, $dataInputGet);
 
             return [
                 'dataList' => $dataList,
                 'pag' => $pagination,
                 'countDataRows' => $countDataRows,
+                'typeList' => $dataInputGet['list'],
                 'adm' => $adm
             ];
         }

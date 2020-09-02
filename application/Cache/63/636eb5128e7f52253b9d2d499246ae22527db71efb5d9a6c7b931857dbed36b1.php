@@ -48,25 +48,23 @@ class __TwigTemplate_76106f52c360a3f476b79f093db196df1e01706f306a178ecf3442e6ad3
         $macros = $this->macros;
         // line 4
         echo "<div class=\"col-md-12 order-md-2\">
-
     ";
-        // line 6
+        // line 5
         if ((0 === twig_compare(($context["adm"] ?? null), 1))) {
-            // line 7
+            // line 6
             echo "        ";
-            $this->loadTemplate("add/form.twig", "add/add.twig", 7)->display($context);
-            // line 8
+            $this->loadTemplate("add/form.twig", "add/add.twig", 6)->display($context);
+            // line 7
             echo "    ";
         } else {
-            // line 9
+            // line 8
             echo "        <div class=\"col-md-12 text-center\"><i class=\"fa fa-key fa-3x\" aria-hidden=\"true\"></i>
             <h3 class=\"h3 mb-3 font-weight-normal\">You need to <a href=\"/admin\" target=\"_blank\">log in</a></h3>
         </div>
     ";
         }
-        // line 13
-        echo "
-</div>
+        // line 12
+        echo "</div>
 ";
     }
 
@@ -82,7 +80,7 @@ class __TwigTemplate_76106f52c360a3f476b79f093db196df1e01706f306a178ecf3442e6ad3
 
     public function getDebugInfo()
     {
-        return array (  68 => 13,  62 => 9,  59 => 8,  56 => 7,  54 => 6,  50 => 4,  46 => 3,  35 => 1,);
+        return array (  67 => 12,  61 => 8,  58 => 7,  55 => 6,  53 => 5,  50 => 4,  46 => 3,  35 => 1,);
     }
 
     public function getSourceContext()

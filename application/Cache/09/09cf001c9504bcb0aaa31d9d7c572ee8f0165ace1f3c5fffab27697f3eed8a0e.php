@@ -56,8 +56,8 @@ class __TwigTemplate_b07905da32e982309f7880a5ccb9c6301d6e2faf317e4f020ebddbbf835
             <div class=\"row\">
                 <div class=\"col-md-12 py-4\">
                     <h4 class=\"text-white\">About task list</h4>
-                    <p class=\"text-muted\">Created to add new tasks. New tasks can be added by anyone. Only the admin can
-                        edit. Anyone can sort all tasks</p>
+                    <p class=\"text-muted\">Created to add new tasks. New tasks can be added by only admin. Only the admin can
+                        edit.</p>
                 </div>
             </div>
         </div>
@@ -176,6 +176,9 @@ class __TwigTemplate_b07905da32e982309f7880a5ccb9c6301d6e2faf317e4f020ebddbbf835
             }
         });
     });
+    \$(\".change-type\").on('change', function () {
+        window.location =  \$(this).val();
+    })
 </script>
 </body>
 </html>";
@@ -201,7 +204,7 @@ class __TwigTemplate_b07905da32e982309f7880a5ccb9c6301d6e2faf317e4f020ebddbbf835
 
     public function getDebugInfo()
     {
-        return array (  189 => 58,  185 => 57,  116 => 68,  105 => 59,  103 => 57,  91 => 47,  88 => 46,  85 => 45,  83 => 44,  38 => 1,);
+        return array (  192 => 58,  188 => 57,  116 => 68,  105 => 59,  103 => 57,  91 => 47,  88 => 46,  85 => 45,  83 => 44,  38 => 1,);
     }
 
     public function getSourceContext()

@@ -13,7 +13,7 @@
   },
   "require": {
     "twig/twig": "^3.0",
-    "twbs/bootstrap":"v4.5.2",
+    "twbs/bootstrap": "v4.5.2",
     "ext-json": "*",
     "ext-pdo": "*",
     "php": ">=7.4.0"
@@ -27,6 +27,9 @@
     }
   },
   "scripts": {
-    "post-update-cmd": "@php \\aplication\\Install\\start.php"
+    "post-install-cmd": "@php application\\Install\\start.php",
+    "post-update-cmd": [
+      "@php application\\Install\\update.php"
+    ]
   }
 }

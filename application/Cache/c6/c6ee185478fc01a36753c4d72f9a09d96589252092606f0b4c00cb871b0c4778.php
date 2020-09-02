@@ -47,33 +47,75 @@ class __TwigTemplate_072919fa5d8c672658f8f010fb26aca46ba0383b43d07be427fc5bf7010
     {
         $macros = $this->macros;
         // line 3
-        echo "    <div class=\"col-md-12 order-md-1 mb-4\">
-        <div class=\"row mb-2 py-3\">
-            <div class=\"col-md-1\"><span class=\"badge badge-info badge-pill\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Tooltip on top\">";
-        // line 5
-        echo twig_escape_filter($this->env, ($context["countDataRows"] ?? null), "html", null, true);
-        echo "</span></div>
-            <div class=\"col-md-4\">
-                <select class=\"form-control\">
-                    <option value=\"list\">List</option>
-                    <option value=\"card\">Card</option>
-                </select>
-            </div>
-
-        </div>
-
-";
-        // line 19
-        echo "        <div class=\"card-deck mb-3 text-center\">
-            ";
-        // line 20
-        $this->loadTemplate("main/card.twig", "main/main.twig", 20)->display($context);
-        // line 21
-        echo "        </div>
+        echo "    <div class=\"col-md-12 order-md-2\">
         ";
-        // line 22
-        $this->loadTemplate("main/pagination.twig", "main/main.twig", 22)->display($context);
-        // line 23
+        // line 4
+        if ((0 === twig_compare(($context["adm"] ?? null), 1))) {
+            // line 5
+            echo "            <div class=\"row mb-2 py-3\">
+                <div class=\"col-md-1\"><span class=\"badge badge-info badge-pill\" data-toggle=\"tooltip\"
+                                            data-placement=\"top\"
+                                            title=\"Tooltip on top\">";
+            // line 8
+            echo twig_escape_filter($this->env, ($context["countDataRows"] ?? null), "html", null, true);
+            echo "</span></div>
+                <div class=\"col-md-4\">
+                    <form>
+                        <select class=\"form-control change-type\">
+                            <option value=\"/main/index/?list=list\" ";
+            // line 12
+            if ((0 === twig_compare(($context["typeList"] ?? null), "list"))) {
+                echo "selected";
+            }
+            echo ">List</option>
+                            <option value=\"/main/index/?list=card\" ";
+            // line 13
+            if ((0 === twig_compare(($context["typeList"] ?? null), "card"))) {
+                echo "selected";
+            }
+            echo ">Card</option>
+                        </select>
+                    </form>
+                </div>
+
+            </div>
+            ";
+            // line 19
+            if ((0 === twig_compare(($context["typeList"] ?? null), "card"))) {
+                // line 20
+                echo "                <div class=\"card-deck mb-3 text-center\">
+                    ";
+                // line 21
+                $this->loadTemplate("main/card.twig", "main/main.twig", 21)->display($context);
+                // line 22
+                echo "                </div>
+            ";
+            } else {
+                // line 24
+                echo "                <ul class=\"list-group mb-3 listTask\">
+                    ";
+                // line 25
+                $this->loadTemplate("main/head.twig", "main/main.twig", 25)->display($context);
+                // line 26
+                echo "                    ";
+                $this->loadTemplate("main/list.twig", "main/main.twig", 26)->display($context);
+                // line 27
+                echo "                </ul>
+            ";
+            }
+            // line 29
+            echo "            ";
+            $this->loadTemplate("main/pagination.twig", "main/main.twig", 29)->display($context);
+            // line 30
+            echo "        ";
+        } else {
+            // line 31
+            echo "            <div class=\"col-md-12 text-center\"><i class=\"fa fa-key fa-3x\" aria-hidden=\"true\"></i>
+                <h3 class=\"h3 mb-3 font-weight-normal\">You need to <a href=\"/admin\" target=\"_blank\">log in</a></h3>
+            </div>
+        ";
+        }
+        // line 35
         echo "    </div>
 ";
     }
@@ -90,7 +132,7 @@ class __TwigTemplate_072919fa5d8c672658f8f010fb26aca46ba0383b43d07be427fc5bf7010
 
     public function getDebugInfo()
     {
-        return array (  77 => 23,  75 => 22,  72 => 21,  70 => 20,  67 => 19,  54 => 5,  50 => 3,  46 => 2,  35 => 1,);
+        return array (  119 => 35,  113 => 31,  110 => 30,  107 => 29,  103 => 27,  100 => 26,  98 => 25,  95 => 24,  91 => 22,  89 => 21,  86 => 20,  84 => 19,  73 => 13,  67 => 12,  60 => 8,  55 => 5,  53 => 4,  50 => 3,  46 => 2,  35 => 1,);
     }
 
     public function getSourceContext()

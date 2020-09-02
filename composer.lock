@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "73aeb41c45362c12813193e359ec9c41",
+    "content-hash": "e6c12233cb81d3ecec2ef02a306552e7",
     "packages": [
         {
             "name": "symfony/polyfill-ctype",
@@ -297,6 +297,7 @@
     "prefer-lowest": false,
     "platform": {
         "ext-json": "*",
+        "ext-pdo": "*",
         "php": ">=7.4.0"
     },
     "platform-dev": [],

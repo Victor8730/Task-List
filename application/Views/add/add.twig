@@ -2,7 +2,6 @@
 
 {% block content %}
 <div class="col-md-12 order-md-2">
-
     {% if adm == 1 %}
         {% include 'add/form.twig' %}
     {% else %}
@@ -10,6 +9,5 @@
             <h3 class="h3 mb-3 font-weight-normal">You need to <a href="/admin" target="_blank">log in</a></h3>
         </div>
     {% endif %}
-
 </div>
 {% endblock %}
