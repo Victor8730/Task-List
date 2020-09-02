@@ -1,3 +1,26 @@
 
 2020-09-01 23:25:26 : Script with problem:E:\Programs\OpenServer\domains\mvc2\application\Install\Base.php / line:28/ Failed to copy ../..//css!
 2020-09-01 23:25:26 : Script with problem:E:\Programs\OpenServer\domains\mvc2\application\Install\Base.php / line:28/ Failed to copy ../..//js!
+ 2020-09-02 15:10:25 : Script with problem: C:\os\domains\mvc2\application\Core\Db.php | Line with problem: 45 | SQLSTATE[HY000] [1045] Access denied for user 'user'@'localhost' (using password: YES)
+2020-09-02 16:30:50 : Script with problem:C:\os\domains\mvc2\application\Install\Base.php / line:28/ Failed to copy ../../test/css!
+2020-09-02 16:30:50 : Script with problem:C:\os\domains\mvc2\application\Install\Base.php / line:21/ Failed to copy ../vendor/twbs/bootstrap/dist/css/bootstrap-grid.css!
+2020-09-02 16:30:50 : Script with problem:C:\os\domains\mvc2\application\Install\Base.php / line:21/ Failed to copy ../vendor/twbs/bootstrap/dist/css/bootstrap-grid.css.map!
+2020-09-02 16:30:50 : Script with problem:C:\os\domains\mvc2\application\Install\Base.php / line:21/ Failed to copy ../vendor/twbs/bootstrap/dist/css/bootstrap-grid.min.css!
+2020-09-02 16:30:50 : Script with problem:C:\os\domains\mvc2\application\Install\Base.php / line:21/ Failed to copy ../vendor/twbs/bootstrap/dist/css/bootstrap-grid.min.css.map!
+2020-09-02 16:30:50 : Script with problem:C:\os\domains\mvc2\application\Install\Base.php / line:21/ Failed to copy ../vendor/twbs/bootstrap/dist/css/bootstrap-reboot.css!
+2020-09-02 16:30:50 : Script with problem:C:\os\domains\mvc2\application\Install\Base.php / line:21/ Failed to copy ../vendor/twbs/bootstrap/dist/css/bootstrap-reboot.css.map!
+2020-09-02 16:30:50 : Script with problem:C:\os\domains\mvc2\application\Install\Base.php / line:21/ Failed to copy ../vendor/twbs/bootstrap/dist/css/bootstrap-reboot.min.css!
+2020-09-02 16:30:50 : Script with problem:C:\os\domains\mvc2\application\Install\Base.php / line:21/ Failed to copy ../vendor/twbs/bootstrap/dist/css/bootstrap-reboot.min.css.map!
+2020-09-02 16:30:50 : Script with problem:C:\os\domains\mvc2\application\Install\Base.php / line:21/ Failed to copy ../vendor/twbs/bootstrap/dist/css/bootstrap.css!
+2020-09-02 16:30:50 : Script with problem:C:\os\domains\mvc2\application\Install\Base.php / line:21/ Failed to copy ../vendor/twbs/bootstrap/dist/css/bootstrap.css.map!
+2020-09-02 16:30:50 : Script with problem:C:\os\domains\mvc2\application\Install\Base.php / line:21/ Failed to copy ../vendor/twbs/bootstrap/dist/css/bootstrap.min.css!
+2020-09-02 16:30:50 : Script with problem:C:\os\domains\mvc2\application\Install\Base.php / line:21/ Failed to copy ../vendor/twbs/bootstrap/dist/css/bootstrap.min.css.map!
+2020-09-02 16:30:50 : Script with problem:C:\os\domains\mvc2\application\Install\Base.php / line:28/ Failed to copy ../../test/js!
+2020-09-02 16:30:50 : Script with problem:C:\os\domains\mvc2\application\Install\Base.php / line:21/ Failed to copy ../vendor/twbs/bootstrap/dist/js/bootstrap.bundle.js!
+2020-09-02 16:30:50 : Script with problem:C:\os\domains\mvc2\application\Install\Base.php / line:21/ Failed to copy ../vendor/twbs/bootstrap/dist/js/bootstrap.bundle.js.map!
+2020-09-02 16:30:50 : Script with problem:C:\os\domains\mvc2\application\Install\Base.php / line:21/ Failed to copy ../vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js!
+2020-09-02 16:30:50 : Script with problem:C:\os\domains\mvc2\application\Install\Base.php / line:21/ Failed to copy ../vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js.map!
+2020-09-02 16:30:50 : Script with problem:C:\os\domains\mvc2\application\Install\Base.php / line:21/ Failed to copy ../vendor/twbs/bootstrap/dist/js/bootstrap.js!
+2020-09-02 16:30:50 : Script with problem:C:\os\domains\mvc2\application\Install\Base.php / line:21/ Failed to copy ../vendor/twbs/bootstrap/dist/js/bootstrap.js.map!
+2020-09-02 16:30:50 : Script with problem:C:\os\domains\mvc2\application\Install\Base.php / line:21/ Failed to copy ../vendor/twbs/bootstrap/dist/js/bootstrap.min.js!
+2020-09-02 16:30:50 : Script with problem:C:\os\domains\mvc2\application\Install\Base.php / line:21/ Failed to copy ../vendor/twbs/bootstrap/dist/js/bootstrap.min.js.map!

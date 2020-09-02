@@ -14,7 +14,7 @@ class Install extends Base
      * @param string $dirSource
      * @param string $dirDest
      */
-    public function copyFileAndDirectory(string $dirSource, string $dirDest): void
+    public static function copyFileAndDirectory(string $dirSource, string $dirDest): void
     {
         $dir = opendir($dirSource);
         while (($file = readdir($dir)) !== false) {

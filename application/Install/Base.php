@@ -15,14 +15,16 @@ class Base
      * @param string $dirDest
      * @throws FailedCopyException
      */
-    protected function copyFile(string $dirSource, string $dirDest): void
+    protected static function copyFile(string $dirSource, string $dirDest): void
     {
         if (!copy($dirSource, $dirDest)) {
             throw new FailedCopyException($dirSource);
+        }else{
+            echo 'ok copied to'.$dirDest;
         }
     }
 
-    protected function makeDir(string $dirSource): void
+    protected static function makeDir(string $dirSource): void
     {
         if (!mkdir($dirSource)) {
             throw new FailedCreateDirException($dirSource);

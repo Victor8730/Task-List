@@ -1,12 +1,11 @@
 {
-  "name": "webpagestudio/mvc2",
-  "description": "MVC mini framework",
+  "name": "webpagestudio/tasklist",
+  "description": "MVC Task list mini",
   "minimum-stability": "stable",
   "license": "GPL-3.0",
   "authors": [
     {
-      "name": "Victor G.",
-      "email": "victor8730@yandex.ua"
+      "name": "Victor G."
     }
   ],
   "config": {
@@ -16,6 +15,7 @@
     "twig/twig": "^3.0",
     "twbs/bootstrap":"v4.5.2",
     "ext-json": "*",
+    "ext-pdo": "*",
     "php": ">=7.4.0"
   },
   "autoload": {
@@ -27,8 +27,6 @@
     }
   },
   "scripts": {
-    "post-package-install": [
-      "Install\\MyClass::postPackageInstall"
-    ]
+    "post-update-cmd": "@php \\aplication\\Install\\start.php"
   }
 }
