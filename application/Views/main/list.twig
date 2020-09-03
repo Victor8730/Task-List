@@ -12,20 +12,27 @@
         <div class="col-md-2 text-center">
             <p class="my-0">
                 {% if task.status == 1 %}
-                    <i class="fa fa-check color-green" aria-hidden="true"></i>
+                    <i class="fa fa-check color-green px-1 pointer" aria-hidden="true" data-toggle="tooltip"
+                       data-placement="top"
+                       title="Task complete"></i>
                 {% else %}
-                    <i class="fa fa-minus-circle" aria-hidden="true"></i>
+                    <i class="fa fa-minus-circle px-1 pointer" aria-hidden="true" data-toggle="tooltip"
+                       data-placement="top"
+                       title="Task in progress"></i>
                 {% endif %}
 
                 {% if task.check_admin == 1 %}
-                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                    <i class="fa fa-pencil px-1 pointer" aria-hidden="true" data-toggle="tooltip" data-placement="top"
+                       title="Task updated by admin"></i>
                 {% endif %}
             </p>
         </div>
         <div class="col-md-1 text-center">
             <p class="my-0">
                 {% if adm == 1 %}
-                    <a href="/add/edit/?id={{ task.id }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                    <a href="/add/edit/?id={{ task.id }}"><i class="fa fa-pencil-square-o" aria-hidden="true"
+                                                             data-toggle="tooltip" data-placement="top"
+                                                             title="Change task"></i></a>
                 {% endif %}
             </p>
         </div>

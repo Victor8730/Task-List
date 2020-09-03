@@ -33,7 +33,19 @@ class ControllerMain extends Controller
     {
         if ($this->isAjax === true) {
             $dataOutSide = $this->validate();
-            setcookie("list", $dataOutSide['list'], time() + 7200, '/');
+            setcookie('list', $dataOutSide['list'], time() + 7200, '/');
+            $this->ajaxResponse(true, 'Successfully updated!');
+        }
+    }
+
+    /**
+     *Change count element per page
+     */
+    public function actionChangePerPage()
+    {
+        if ($this->isAjax === true) {
+            $dataOutSide = $this->validate();
+            setcookie('limit', strval($dataOutSide['filter']['limit']), time() + 7200, '/');
             $this->ajaxResponse(true, 'Successfully updated!');
         }
     }
@@ -47,8 +59,8 @@ class ControllerMain extends Controller
         $sort = $_GET['sort'] ?? 'id';
         $order = $_GET['order'] ?? 'DESC';
         $list = $_POST['list'] ?? $_COOKIE['list'] ?? $_GET['list'] ?? 'list';
+        $limit = $_POST['limit'] ?? $_COOKIE['limit'] ?? $_GET['limit'] ?? 3;
         $start = $_GET['start'] ?? 0;
-        $limit = $_GET['limit'] ?? 4;
         $filter = [];
 
         try {
@@ -71,26 +83,6 @@ class ControllerMain extends Controller
     }
 
     /**
-     * Create pagination and return string with pagination html code
-     * @param int|null $count
-     * @param array|null $url
-     * @return string
-     */
-    private function createPagination(?int $count, ?array $url): string
-    {
-        $limit = $url['filter']['limit'] ?? 1;
-        $elementPagination = '';
-        $countPage = ceil($count / $limit);
-
-        for ($i = 1, $num = 0; $i <= $countPage; $i++, $num++) {
-            $numPage = $num * $limit;
-            $elementPagination .= '<li class="page-item"><a class="page-link" href="/main/index?sort=' . $url['sort'] . '&list=' . $url['list'] . '&order=' . $url['order'] . '&start=' . $numPage . '">' . $i . '</a></li>';
-        }
-
-        return $elementPagination;
-    }
-
-    /**
      * Data provider for page rendering, return array with data
      * @return array
      */
@@ -101,15 +93,20 @@ class ControllerMain extends Controller
         if ($this->validator->isErrors() === false && $this->isAjax === false) {
             $sortData = $dataOutSide['sort'] . ' ' . $dataOutSide['order'];
             $dataList = $this->model->getData($sortData, $dataOutSide['filter']);
-            $countDataRows = $this->model->getCountDataRows();
+            $CountAllRows = $this->model->getCountAllRows();
+            $countStatusComplete = $this->model->getCountAllRows();
             $adm = $this->auth->isAuth();
-            $pagination = $this->createPagination($countDataRows, $dataOutSide);
+
+            $urlPattern = '/main/index?sort=' . $dataOutSide['sort'] . '&list=' . $dataOutSide['list'] . '&order=' . $dataOutSide['order'] . '&start=(:num)';
+            $paginator = new \JasonGrimes\Paginator($CountAllRows, $dataOutSide['filter']['limit'], $dataOutSide['filter']['start'], $urlPattern);
 
             return [
                 'dataList' => $dataList,
-                'pag' => $pagination,
-                'countDataRows' => $countDataRows,
+                'paginator' => $paginator,
+                'countDataRows' => $CountAllRows,
+                'countStatusComplete' => $countStatusComplete,
                 'typeList' => $dataOutSide['list'],
+                'perPage' => $dataOutSide['filter']['limit'],
                 'adm' => $adm
             ];
         }

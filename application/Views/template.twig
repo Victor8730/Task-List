@@ -79,6 +79,10 @@
 <script src="/js/bootstrap.js"></script>
 <script src="/js/bootstrap.bundle.js"></script>
 <script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+
     (function () {
         'use strict';
         window.addEventListener('load', function () {
@@ -156,7 +160,25 @@
                 }
             }
         });
-    })
+    });
+
+    $(".change-count").on('change', function () {
+        let limit = $(this).val();
+        $.ajax({
+            type: 'POST',
+            url: 'main/changeperpage',
+            data: {limit: limit},
+            dataType: 'json',
+            success: function (answer) {
+                if (answer['success'] === true) {
+                    showAlert(answer['message'], 'info');
+                    setTimeout(function () {
+                        document.location.href = ''
+                    }, 2500);
+                }
+            }
+        });
+    });
 </script>
 </body>
 </html>

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace core\face;
+namespace Core\face;
 
 interface Base
 {

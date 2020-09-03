@@ -2,35 +2,72 @@
 {% block content %}
     <div class="col-md-12 order-md-2">
         {% if adm == 1 %}
-            <div class="row mb-2 py-3">
 
-                <div class="col-md-1"><span class="badge badge-info badge-pill" data-toggle="tooltip"
-                                            data-placement="top"
-                                            title="Tooltip on top">{{ countDataRows }}</span></div>
-                <div class="col-md-4">
-                    <form>
-                        <select class="form-control change-type">
-                            <option disabled>Change style list</option>
-                            <option value="list" {% if typeList == 'list' %}selected{% endif %}>List
-                            </option>
-                            <option value="card" {% if typeList == 'card' %}selected{% endif %}>Card
-                            </option>
-                        </select>
-                    </form>
+            <div class="card text-center">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <form>
+                                <select class="form-control change-type" data-toggle="tooltip" data-placement="top"
+                                        title="Select the type of task list">
+                                    <option disabled>Change style list</option>
+                                    <option value="list" {% if typeList == 'list' %}selected{% endif %}>List
+                                    </option>
+                                    <option value="card" {% if typeList == 'card' %}selected{% endif %}>Card
+                                    </option>
+                                </select>
+                            </form>
+                        </div>
+                        <div class="col-md-3">
+                            <form>
+                                <select class="form-control change-count" data-toggle="tooltip" data-placement="top"
+                                        title="How many elements per page">
+                                    <option disabled>Change per page</option>
+                                    <option value="3" {% if perPage == 3 %}selected{% endif %}>3</option>
+                                    <option value="5" {% if perPage == 5 %}selected{% endif %}>5</option>
+                                    {% if typeList == 'list' %}
+                                    <option value="10" {% if perPage == 10 %}selected{% endif %}>10</option>
+                                    <option value="15" {% if perPage == 15 %}selected{% endif %}>15</option>
+                                    {% endif %}
+                                </select>
+                            </form>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="fa fa-user" aria-hidden="true"></i></div>
+                                </div>
+                                <input type="text" class="form-control user-search" name="user" placeholder="Name">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <button type="button" class="btn btn-outline-secondary" data-toggle="tooltip" data-placement="top"
+                                    title="Number of all tasks">
+                                <span class="badge badge-secondary badge-pill">{{ countDataRows }}</span>
+                            </button>
+                            <button type="button" class="btn btn-outline-success" data-toggle="tooltip" data-placement="top"
+                                    title="Completed tasks">
+                                 <span class="badge badge-success badge-pill">{{ countStatusComplete }}</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-4"></div>
+                <div class="card-body">
+                    {% if typeList == 'card' %}
+                        <div class="card-deck mb-3 text-center">
+                            {% include 'main/card.twig' %}
+                        </div>
+                    {% else %}
+                        <ul class="list-group mb-3 listTask">
+                            {% include 'main/head.twig' %}
+                            {% include 'main/list.twig' %}
+                        </ul>
+                    {% endif %}
+                </div>
+                <div class="card-footer text-muted">
+                    {% include 'main/pagination.twig' %}
+                </div>
             </div>
-            {% if typeList == 'card' %}
-                <div class="card-deck mb-3 text-center">
-                    {% include 'main/card.twig' %}
-                </div>
-            {% else %}
-                <ul class="list-group mb-3 listTask">
-                    {% include 'main/head.twig' %}
-                    {% include 'main/list.twig' %}
-                </ul>
-            {% endif %}
-            {% include 'main/pagination.twig' %}
         {% else %}
             <div class="col-md-12 text-center"><i class="fa fa-key fa-3x" aria-hidden="true"></i>
                 <h3 class="h3 mb-3 font-weight-normal">You need to <a href="/admin" target="_blank">log in</a></h3>

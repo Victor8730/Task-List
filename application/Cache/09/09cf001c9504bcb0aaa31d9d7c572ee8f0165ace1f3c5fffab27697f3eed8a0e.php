@@ -128,6 +128,10 @@ class __TwigTemplate_b07905da32e982309f7880a5ccb9c6301d6e2faf317e4f020ebddbbf835
 <script src=\"/js/bootstrap.js\"></script>
 <script src=\"/js/bootstrap.bundle.js\"></script>
 <script>
+    \$(function () {
+        \$('[data-toggle=\"tooltip\"]').tooltip();
+    });
+
     (function () {
         'use strict';
         window.addEventListener('load', function () {
@@ -205,7 +209,25 @@ class __TwigTemplate_b07905da32e982309f7880a5ccb9c6301d6e2faf317e4f020ebddbbf835
                 }
             }
         });
-    })
+    });
+
+    \$(\".change-count\").on('change', function () {
+        let limit = \$(this).val();
+        \$.ajax({
+            type: 'POST',
+            url: 'main/changeperpage',
+            data: {limit: limit},
+            dataType: 'json',
+            success: function (answer) {
+                if (answer['success'] === true) {
+                    showAlert(answer['message'], 'info');
+                    setTimeout(function () {
+                        document.location.href = ''
+                    }, 2500);
+                }
+            }
+        });
+    });
 </script>
 </body>
 </html>";
@@ -231,11 +253,11 @@ class __TwigTemplate_b07905da32e982309f7880a5ccb9c6301d6e2faf317e4f020ebddbbf835
 
     public function getDebugInfo()
     {
-        return array (  219 => 64,  215 => 63,  122 => 74,  111 => 65,  109 => 63,  92 => 48,  89 => 47,  86 => 46,  84 => 45,  38 => 1,);
+        return array (  241 => 64,  237 => 63,  122 => 74,  111 => 65,  109 => 63,  92 => 48,  89 => 47,  86 => 46,  84 => 45,  38 => 1,);
     }
 
     public function getSourceContext()
     {
-        return new Source("", "template.twig", "C:\\os\\domains\\mvc2\\application\\Views\\template.twig");
+        return new Source("", "template.twig", "E:\\Programs\\OpenServer\\domains\\mvc2\\application\\Views\\template.twig");
     }
 }

@@ -63,37 +63,44 @@ class __TwigTemplate_3593b0e0b0909b5e0f4efb76e049b63dc82def98574ac5e17660a64a4f2
             // line 14
             if ((0 === twig_compare(twig_get_attribute($this->env, $this->source, $context["task"], "status", [], "any", false, false, false, 14), 1))) {
                 // line 15
-                echo "                    <i class=\"fa fa-check color-green\" aria-hidden=\"true\"></i>
+                echo "                    <i class=\"fa fa-check color-green px-1 pointer\" aria-hidden=\"true\" data-toggle=\"tooltip\"
+                       data-placement=\"top\"
+                       title=\"Task complete\"></i>
                 ";
             } else {
-                // line 17
-                echo "                    <i class=\"fa fa-minus-circle\" aria-hidden=\"true\"></i>
-                ";
-            }
-            // line 19
-            echo "
-                ";
-            // line 20
-            if ((0 === twig_compare(twig_get_attribute($this->env, $this->source, $context["task"], "check_admin", [], "any", false, false, false, 20), 1))) {
-                // line 21
-                echo "                    <i class=\"fa fa-pencil\" aria-hidden=\"true\"></i>
+                // line 19
+                echo "                    <i class=\"fa fa-minus-circle px-1 pointer\" aria-hidden=\"true\" data-toggle=\"tooltip\"
+                       data-placement=\"top\"
+                       title=\"Task in progress\"></i>
                 ";
             }
             // line 23
+            echo "
+                ";
+            // line 24
+            if ((0 === twig_compare(twig_get_attribute($this->env, $this->source, $context["task"], "check_admin", [], "any", false, false, false, 24), 1))) {
+                // line 25
+                echo "                    <i class=\"fa fa-pencil px-1 pointer\" aria-hidden=\"true\" data-toggle=\"tooltip\" data-placement=\"top\"
+                       title=\"Task updated by admin\"></i>
+                ";
+            }
+            // line 28
             echo "            </p>
         </div>
         <div class=\"col-md-1 text-center\">
             <p class=\"my-0\">
                 ";
-            // line 27
+            // line 32
             if ((0 === twig_compare(($context["adm"] ?? null), 1))) {
-                // line 28
+                // line 33
                 echo "                    <a href=\"/add/edit/?id=";
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["task"], "id", [], "any", false, false, false, 28), "html", null, true);
-                echo "\"><i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i></a>
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["task"], "id", [], "any", false, false, false, 33), "html", null, true);
+                echo "\"><i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"
+                                                             data-toggle=\"tooltip\" data-placement=\"top\"
+                                                             title=\"Change task\"></i></a>
                 ";
             }
-            // line 30
+            // line 37
             echo "            </p>
         </div>
     </li>
@@ -102,7 +109,7 @@ class __TwigTemplate_3593b0e0b0909b5e0f4efb76e049b63dc82def98574ac5e17660a64a4f2
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['task'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 34
+        // line 41
         echo "
 ";
     }
@@ -119,11 +126,11 @@ class __TwigTemplate_3593b0e0b0909b5e0f4efb76e049b63dc82def98574ac5e17660a64a4f2
 
     public function getDebugInfo()
     {
-        return array (  106 => 34,  97 => 30,  91 => 28,  89 => 27,  83 => 23,  79 => 21,  77 => 20,  74 => 19,  70 => 17,  66 => 15,  64 => 14,  57 => 10,  51 => 7,  45 => 4,  41 => 2,  37 => 1,);
+        return array (  113 => 41,  104 => 37,  96 => 33,  94 => 32,  88 => 28,  83 => 25,  81 => 24,  78 => 23,  72 => 19,  66 => 15,  64 => 14,  57 => 10,  51 => 7,  45 => 4,  41 => 2,  37 => 1,);
     }
 
     public function getSourceContext()
     {
-        return new Source("", "main/list.twig", "C:\\os\\domains\\mvc2\\application\\Views\\main\\list.twig");
+        return new Source("", "main/list.twig", "E:\\Programs\\OpenServer\\domains\\mvc2\\application\\Views\\main\\list.twig");
     }
 }

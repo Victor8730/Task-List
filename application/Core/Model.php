@@ -34,7 +34,17 @@ class Model extends Db
      * Get the number of lines in the database
      * @return int
      */
-    public function getCountDataRows(): int
+    public function getCountAllRows(): int
+    {
+        $arrayCount = $this->getData();
+        return (int)$arrayCount[0]['count'];
+    }
+
+    /**
+     * Get the number of lines in the database
+     * @return int
+     */
+    public function getCountStatusComplete(): int
     {
         $arrayCount = $this->getData();
         return (int)$arrayCount[0]['count'];

@@ -85,7 +85,7 @@ class ControllerAdd extends Controller
             $dataOutSide[] = ($currentElement['task'] === $dataOutSide[2]) ? 0 : 1;
             $fields = ['name', 'email', 'task', 'status', 'date_update', 'check_admin'];
             $this->model->updateData($fields, $dataOutSide, $id);
-            $this->ajaxResponse(true, '');
+            $this->ajaxResponse(true, 'Successfully update!');
         } else {
             $this->ajaxResponse(false, 'You need to <a href="/admin" target="_blank">log in</a>');
         }

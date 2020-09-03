@@ -83,3 +83,5 @@
  2020-09-03 10:17:00 : Script with problem: C:\os\domains\mvc2\application\Core\Db.php | Line with problem: 45 | SQLSTATE[HY000] [1045] Access denied for user 'user'@'localhost' (using password: YES)
  2020-09-03 11:24:47 : Script with problem: C:\os\domains\mvc2\application\Core\Db.php | Line with problem: 45 | SQLSTATE[HY000] [1045] Access denied for user 'user'@'localhost' (using password: YES)
  2020-09-03 11:25:43 : Script with problem: C:\os\domains\mvc2\application\Core\Db.php | Line with problem: 45 | SQLSTATE[HY000] [1045] Access denied for user 'user'@'localhost' (using password: YES)
+2020-09-03 20:54:01 : Script with problem: E:\Programs\OpenServer\domains\mvc2\application\Core\Validator.php Line with problem: 106 | file template 'application/Controllers/ControllerIndex.php' not exist!
+2020-09-03 20:54:31 : Script with problem: E:\Programs\OpenServer\domains\mvc2\application\Core\Validator.php Line with problem: 106 | file template 'application/Controllers/ControllerIndex.php' not exist!
