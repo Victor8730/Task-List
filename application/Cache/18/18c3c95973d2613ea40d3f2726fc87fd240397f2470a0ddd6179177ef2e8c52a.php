@@ -109,6 +109,6 @@ class __TwigTemplate_0f110ddbb15e7fc31e1f036facff6c5b3d105660ffd341c92db5dcc8aa6
 
     public function getSourceContext()
     {
-        return new Source("", "admin/admin.twig", "E:\\Programs\\OpenServer\\domains\\mvc2\\application\\Views\\admin\\admin.twig");
+        return new Source("", "admin/admin.twig", "C:\\os\\domains\\mvc2\\application\\Views\\admin\\admin.twig");
     }
 }

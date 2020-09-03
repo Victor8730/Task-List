@@ -53,69 +53,73 @@ class __TwigTemplate_072919fa5d8c672658f8f010fb26aca46ba0383b43d07be427fc5bf7010
         if ((0 === twig_compare(($context["adm"] ?? null), 1))) {
             // line 5
             echo "            <div class=\"row mb-2 py-3\">
+
                 <div class=\"col-md-1\"><span class=\"badge badge-info badge-pill\" data-toggle=\"tooltip\"
                                             data-placement=\"top\"
                                             title=\"Tooltip on top\">";
-            // line 8
+            // line 9
             echo twig_escape_filter($this->env, ($context["countDataRows"] ?? null), "html", null, true);
             echo "</span></div>
                 <div class=\"col-md-4\">
                     <form>
                         <select class=\"form-control change-type\">
-                            <option value=\"/main/index/?list=list\" ";
-            // line 12
+                            <option disabled>Change style list</option>
+                            <option value=\"list\" ";
+            // line 14
             if ((0 === twig_compare(($context["typeList"] ?? null), "list"))) {
                 echo "selected";
             }
-            echo ">List</option>
-                            <option value=\"/main/index/?list=card\" ";
-            // line 13
+            echo ">List
+                            </option>
+                            <option value=\"card\" ";
+            // line 16
             if ((0 === twig_compare(($context["typeList"] ?? null), "card"))) {
                 echo "selected";
             }
-            echo ">Card</option>
+            echo ">Card
+                            </option>
                         </select>
                     </form>
                 </div>
-
+                <div class=\"col-md-4\"></div>
             </div>
             ";
-            // line 19
+            // line 23
             if ((0 === twig_compare(($context["typeList"] ?? null), "card"))) {
-                // line 20
+                // line 24
                 echo "                <div class=\"card-deck mb-3 text-center\">
                     ";
-                // line 21
-                $this->loadTemplate("main/card.twig", "main/main.twig", 21)->display($context);
-                // line 22
+                // line 25
+                $this->loadTemplate("main/card.twig", "main/main.twig", 25)->display($context);
+                // line 26
                 echo "                </div>
             ";
             } else {
-                // line 24
+                // line 28
                 echo "                <ul class=\"list-group mb-3 listTask\">
                     ";
-                // line 25
-                $this->loadTemplate("main/head.twig", "main/main.twig", 25)->display($context);
-                // line 26
+                // line 29
+                $this->loadTemplate("main/head.twig", "main/main.twig", 29)->display($context);
+                // line 30
                 echo "                    ";
-                $this->loadTemplate("main/list.twig", "main/main.twig", 26)->display($context);
-                // line 27
+                $this->loadTemplate("main/list.twig", "main/main.twig", 30)->display($context);
+                // line 31
                 echo "                </ul>
             ";
             }
-            // line 29
+            // line 33
             echo "            ";
-            $this->loadTemplate("main/pagination.twig", "main/main.twig", 29)->display($context);
-            // line 30
+            $this->loadTemplate("main/pagination.twig", "main/main.twig", 33)->display($context);
+            // line 34
             echo "        ";
         } else {
-            // line 31
+            // line 35
             echo "            <div class=\"col-md-12 text-center\"><i class=\"fa fa-key fa-3x\" aria-hidden=\"true\"></i>
                 <h3 class=\"h3 mb-3 font-weight-normal\">You need to <a href=\"/admin\" target=\"_blank\">log in</a></h3>
             </div>
         ";
         }
-        // line 35
+        // line 39
         echo "    </div>
 ";
     }
@@ -132,11 +136,11 @@ class __TwigTemplate_072919fa5d8c672658f8f010fb26aca46ba0383b43d07be427fc5bf7010
 
     public function getDebugInfo()
     {
-        return array (  119 => 35,  113 => 31,  110 => 30,  107 => 29,  103 => 27,  100 => 26,  98 => 25,  95 => 24,  91 => 22,  89 => 21,  86 => 20,  84 => 19,  73 => 13,  67 => 12,  60 => 8,  55 => 5,  53 => 4,  50 => 3,  46 => 2,  35 => 1,);
+        return array (  123 => 39,  117 => 35,  114 => 34,  111 => 33,  107 => 31,  104 => 30,  102 => 29,  99 => 28,  95 => 26,  93 => 25,  90 => 24,  88 => 23,  76 => 16,  69 => 14,  61 => 9,  55 => 5,  53 => 4,  50 => 3,  46 => 2,  35 => 1,);
     }
 
     public function getSourceContext()
     {
-        return new Source("", "main/main.twig", "E:\\Programs\\OpenServer\\domains\\mvc2\\application\\Views\\main\\main.twig");
+        return new Source("", "main/main.twig", "C:\\os\\domains\\mvc2\\application\\Views\\main\\main.twig");
     }
 }

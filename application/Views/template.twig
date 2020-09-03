@@ -19,7 +19,8 @@
             <div class="row">
                 <div class="col-md-12 py-4">
                     <h4 class="text-white">About task list</h4>
-                    <p class="text-muted">Created to add new tasks. New tasks can be added by only admin. Only the admin can
+                    <p class="text-muted">Created to add new tasks. New tasks can be added by only admin. Only the admin
+                        can
                         edit.</p>
                 </div>
             </div>
@@ -48,6 +49,11 @@
     </div>
 </header>
 <div class="container">
+    <div class="col-md-12">
+        <div class="info-block">
+
+        </div>
+    </div>
     <div class="py-3 text-center">
         <img class="d-block mx-auto mb-2" src="/img/task.png" alt="Task Manager" width="150" height="150">
         <h2>Task list</h2>
@@ -71,6 +77,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" crossorigin="anonymous"></script>
 <script src="/js/bootstrap.js"></script>
+<script src="/js/bootstrap.bundle.js"></script>
 <script>
     (function () {
         'use strict';
@@ -87,6 +94,14 @@
             });
         }, false);
     })();
+
+    function showAlert(message, type) {
+        $('.info-block').append('<div class="alert alert-' + type + '" role="alert">' + message + '</div>').hide().fadeIn(1000).fadeOut(3000);
+        setTimeout(function () {
+            $(".alert").alert('close');
+        }, 3000);
+    }
+
     $(".form-signin, .form-task").submit(function () {
         event.preventDefault();
         let data = $(this).serialize();
@@ -98,14 +113,12 @@
             dataType: 'json',
             success: function (answer) {
                 if (answer['success'] === true) {
-                    $('.success-enter').removeClass('d-none').text(answer['message']).show(2500).hide(2000);
-                    $('.error-enter').hide();
+                    showAlert(answer['message'], 'success');
                     setTimeout(function () {
                         document.location.href = ''
                     }, 3000);
                 } else {
-                    $('.error-enter').removeClass('d-none').show(2000);
-                    $('.error-enter').append(answer['message']);
+                    showAlert(answer['message'], 'danger');
                 }
             }
         });
@@ -119,7 +132,7 @@
             dataType: 'json',
             success: function (answer) {
                 if (answer['success'] === true) {
-                    $('.success-enter').removeClass('d-none').text(answer['message']).show(2000).hide(2000);
+                    $('.success-enter').removeClass('d-none').text(answer['message']).show(2000).hide(5000);
                     setTimeout(function () {
                         document.location.href = ''
                     }, 2500);
@@ -128,7 +141,21 @@
         });
     });
     $(".change-type").on('change', function () {
-        window.location =  $(this).val();
+        let list = $(this).val();
+        $.ajax({
+            type: 'POST',
+            url: 'main/changelist',
+            data: {list: list},
+            dataType: 'json',
+            success: function (answer) {
+                if (answer['success'] === true) {
+                    showAlert(answer['message'], 'info');
+                    setTimeout(function () {
+                        document.location.href = ''
+                    }, 2500);
+                }
+            }
+        });
     })
 </script>
 </body>

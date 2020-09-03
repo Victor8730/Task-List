@@ -60,6 +60,6 @@ class __TwigTemplate_a2fda27fb276d9657ba62855edaec4beb56d7db0265de138fa7230dd87c
 
     public function getSourceContext()
     {
-        return new Source("", "admin/logout.twig", "E:\\Programs\\OpenServer\\domains\\mvc2\\application\\Views\\admin\\logout.twig");
+        return new Source("", "admin/logout.twig", "C:\\os\\domains\\mvc2\\application\\Views\\admin\\logout.twig");
     }
 }

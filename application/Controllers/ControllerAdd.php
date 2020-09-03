@@ -55,12 +55,12 @@ class ControllerAdd extends Controller
      */
     public function actionPost(): void
     {
-        $data = $this->validate();
+        $dataOutSide = $this->validate();
 
         if ($this->validator->isErrors() === false && $this->auth->isAuth() === true) {
             $fields = ['name', 'email', 'task', 'status', 'date_add'];
-            $this->model->saveData($fields, $data);
-            $this->ajaxResponse(true,'');
+            $this->model->saveData($fields, $dataOutSide);
+            $this->ajaxResponse(true,'Successfully added!');
         }else{
             $this->ajaxResponse(false, 'You need to <a href="/admin" target="_blank">log in</a>');
         }
@@ -72,7 +72,7 @@ class ControllerAdd extends Controller
     public function actionPut(): void
     {
         $id = '';
-        $data = $this->validate();
+        $dataOutSide = $this->validate();
 
         try {
             $id = $this->validator->checkInt((int)$_POST['id-element']);
@@ -82,9 +82,9 @@ class ControllerAdd extends Controller
 
         if ($this->validator->isErrors() === false && $this->auth->isAuth() === true) {
             $currentElement = $this->model->getDataById($id);
-            $data[] = ($currentElement['task'] === $data[2]) ? 0 : 1;
+            $dataOutSide[] = ($currentElement['task'] === $dataOutSide[2]) ? 0 : 1;
             $fields = ['name', 'email', 'task', 'status', 'date_update', 'check_admin'];
-            $this->model->updateData($fields, $data, $id);
+            $this->model->updateData($fields, $dataOutSide, $id);
             $this->ajaxResponse(true, '');
         } else {
             $this->ajaxResponse(false, 'You need to <a href="/admin" target="_blank">log in</a>');

@@ -56,7 +56,8 @@ class __TwigTemplate_b07905da32e982309f7880a5ccb9c6301d6e2faf317e4f020ebddbbf835
             <div class=\"row\">
                 <div class=\"col-md-12 py-4\">
                     <h4 class=\"text-white\">About task list</h4>
-                    <p class=\"text-muted\">Created to add new tasks. New tasks can be added by only admin. Only the admin can
+                    <p class=\"text-muted\">Created to add new tasks. New tasks can be added by only admin. Only the admin
+                        can
                         edit.</p>
                 </div>
             </div>
@@ -79,19 +80,24 @@ class __TwigTemplate_b07905da32e982309f7880a5ccb9c6301d6e2faf317e4f020ebddbbf835
                 <i class=\"fa fa-info-circle fa-2x mr-4\" aria-hidden=\"true\"></i>
             </button>
             ";
-        // line 44
+        // line 45
         if ((0 === twig_compare(($context["adm"] ?? null), 1))) {
-            // line 45
-            echo "                ";
-            $this->loadTemplate("admin/logout.twig", "template.twig", 45)->display($context);
             // line 46
+            echo "                ";
+            $this->loadTemplate("admin/logout.twig", "template.twig", 46)->display($context);
+            // line 47
             echo "            ";
         }
-        // line 47
+        // line 48
         echo "        </div>
     </div>
 </header>
 <div class=\"container\">
+    <div class=\"col-md-12\">
+        <div class=\"info-block\">
+
+        </div>
+    </div>
     <div class=\"py-3 text-center\">
         <img class=\"d-block mx-auto mb-2\" src=\"/img/task.png\" alt=\"Task Manager\" width=\"150\" height=\"150\">
         <h2>Task list</h2>
@@ -99,9 +105,9 @@ class __TwigTemplate_b07905da32e982309f7880a5ccb9c6301d6e2faf317e4f020ebddbbf835
 
     <div class=\"row content\">
         ";
-        // line 57
+        // line 63
         $this->displayBlock('content', $context, $blocks);
-        // line 59
+        // line 65
         echo "    </div>
 
     <footer class=\"my-5 pt-5 text-muted text-center text-small\">
@@ -112,7 +118,7 @@ class __TwigTemplate_b07905da32e982309f7880a5ccb9c6301d6e2faf317e4f020ebddbbf835
             <li class=\"list-group-item\"><a href=\"/add\">Add task</a></li>
         </ul>
         <p>";
-        // line 68
+        // line 74
         echo twig_escape_filter($this->env, ($context["timeGeneration"] ?? null), "html", null, true);
         echo "</p>
     </footer>
@@ -120,6 +126,7 @@ class __TwigTemplate_b07905da32e982309f7880a5ccb9c6301d6e2faf317e4f020ebddbbf835
 
 <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js\" crossorigin=\"anonymous\"></script>
 <script src=\"/js/bootstrap.js\"></script>
+<script src=\"/js/bootstrap.bundle.js\"></script>
 <script>
     (function () {
         'use strict';
@@ -136,6 +143,14 @@ class __TwigTemplate_b07905da32e982309f7880a5ccb9c6301d6e2faf317e4f020ebddbbf835
             });
         }, false);
     })();
+
+    function showAlert(message, type) {
+        \$('.info-block').append('<div class=\"alert alert-' + type + '\" role=\"alert\">' + message + '</div>').hide().fadeIn(1000).fadeOut(3000);
+        setTimeout(function () {
+            \$(\".alert\").alert('close');
+        }, 3000);
+    }
+
     \$(\".form-signin, .form-task\").submit(function () {
         event.preventDefault();
         let data = \$(this).serialize();
@@ -147,14 +162,12 @@ class __TwigTemplate_b07905da32e982309f7880a5ccb9c6301d6e2faf317e4f020ebddbbf835
             dataType: 'json',
             success: function (answer) {
                 if (answer['success'] === true) {
-                    \$('.success-enter').removeClass('d-none').text(answer['message']).show(2500).hide(2000);
-                    \$('.error-enter').hide();
+                    showAlert(answer['message'], 'success');
                     setTimeout(function () {
                         document.location.href = ''
                     }, 3000);
                 } else {
-                    \$('.error-enter').removeClass('d-none').show(2000);
-                    \$('.error-enter').append(answer['message']);
+                    showAlert(answer['message'], 'danger');
                 }
             }
         });
@@ -168,7 +181,7 @@ class __TwigTemplate_b07905da32e982309f7880a5ccb9c6301d6e2faf317e4f020ebddbbf835
             dataType: 'json',
             success: function (answer) {
                 if (answer['success'] === true) {
-                    \$('.success-enter').removeClass('d-none').text(answer['message']).show(2000).hide(2000);
+                    \$('.success-enter').removeClass('d-none').text(answer['message']).show(2000).hide(5000);
                     setTimeout(function () {
                         document.location.href = ''
                     }, 2500);
@@ -177,18 +190,32 @@ class __TwigTemplate_b07905da32e982309f7880a5ccb9c6301d6e2faf317e4f020ebddbbf835
         });
     });
     \$(\".change-type\").on('change', function () {
-        window.location =  \$(this).val();
+        let list = \$(this).val();
+        \$.ajax({
+            type: 'POST',
+            url: 'main/changelist',
+            data: {list: list},
+            dataType: 'json',
+            success: function (answer) {
+                if (answer['success'] === true) {
+                    showAlert(answer['message'], 'info');
+                    setTimeout(function () {
+                        document.location.href = ''
+                    }, 2500);
+                }
+            }
+        });
     })
 </script>
 </body>
 </html>";
     }
 
-    // line 57
+    // line 63
     public function block_content($context, array $blocks = [])
     {
         $macros = $this->macros;
-        // line 58
+        // line 64
         echo "        ";
     }
 
@@ -204,11 +231,11 @@ class __TwigTemplate_b07905da32e982309f7880a5ccb9c6301d6e2faf317e4f020ebddbbf835
 
     public function getDebugInfo()
     {
-        return array (  192 => 58,  188 => 57,  116 => 68,  105 => 59,  103 => 57,  91 => 47,  88 => 46,  85 => 45,  83 => 44,  38 => 1,);
+        return array (  219 => 64,  215 => 63,  122 => 74,  111 => 65,  109 => 63,  92 => 48,  89 => 47,  86 => 46,  84 => 45,  38 => 1,);
     }
 
     public function getSourceContext()
     {
-        return new Source("", "template.twig", "E:\\Programs\\OpenServer\\domains\\mvc2\\application\\Views\\template.twig");
+        return new Source("", "template.twig", "C:\\os\\domains\\mvc2\\application\\Views\\template.twig");
     }
 }

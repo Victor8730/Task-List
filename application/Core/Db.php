@@ -68,17 +68,17 @@ class Db
         ?array $limit = null
     ): ?array {
         $dbConnect = $this->connect();
-
+        $table = $this->dbPrefix . $this->table;
         try {
             if (isset($dbConnect)) {
                 if ($id !== null) {
-                    $dbs = $dbConnect->prepare("SELECT * FROM task WHERE  id = :id");
+                    $dbs = $dbConnect->prepare("SELECT * FROM $table WHERE  id = :id");
                     $dbs->bindParam(':id', $id, \PDO::PARAM_INT);
                 } else {
                     if ($limit === null) {
-                        $dbs = $dbConnect->prepare("SELECT COUNT(*) as count FROM task");
+                        $dbs = $dbConnect->prepare("SELECT COUNT(*) as count FROM $table");
                     } else {
-                        $dbs = $dbConnect->prepare("SELECT * FROM task ORDER BY $param LIMIT :start, :number ");
+                        $dbs = $dbConnect->prepare("SELECT * FROM $table ORDER BY $param LIMIT :start, :number ");
                         $dbs->bindParam(':start', $limit['start'], \PDO::PARAM_INT);
                         $dbs->bindParam(':number', $limit['limit'], \PDO::PARAM_INT);
                     }

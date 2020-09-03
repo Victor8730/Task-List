@@ -101,6 +101,6 @@ class __TwigTemplate_4d055b5ba3d24e6b10b69a4edb0dd75f49b6dbbd33ca3614391729498bf
 
     public function getSourceContext()
     {
-        return new Source("", "main/card.twig", "E:\\Programs\\OpenServer\\domains\\mvc2\\application\\Views\\main\\card.twig");
+        return new Source("", "main/card.twig", "C:\\os\\domains\\mvc2\\application\\Views\\main\\card.twig");
     }
 }

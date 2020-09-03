@@ -27,6 +27,18 @@ class ControllerMain extends Controller
     }
 
     /**
+     *Change type list task
+     */
+    public function actionChangeList()
+    {
+        if ($this->isAjax === true) {
+            $dataOutSide = $this->validate();
+            setcookie("list", $dataOutSide['list'], time() + 7200, '/');
+            $this->ajaxResponse(true, 'Successfully updated!');
+        }
+    }
+
+    /**
      * Check data validity
      * @return array
      */
@@ -34,7 +46,7 @@ class ControllerMain extends Controller
     {
         $sort = $_GET['sort'] ?? 'id';
         $order = $_GET['order'] ?? 'DESC';
-        $list = $_GET['list'] ?? 'list';
+        $list = $_POST['list'] ?? $_COOKIE['list'] ?? $_GET['list'] ?? 'list';
         $start = $_GET['start'] ?? 0;
         $limit = $_GET['limit'] ?? 4;
         $filter = [];
@@ -84,20 +96,20 @@ class ControllerMain extends Controller
      */
     private function dataProvider(): array
     {
-        $dataInputGet = $this->validate();
+        $dataOutSide = $this->validate();
 
         if ($this->validator->isErrors() === false && $this->isAjax === false) {
-            $sortData = $dataInputGet['sort'] . ' ' . $dataInputGet['order'];
-            $dataList = $this->model->getData($sortData, $dataInputGet['filter']);
+            $sortData = $dataOutSide['sort'] . ' ' . $dataOutSide['order'];
+            $dataList = $this->model->getData($sortData, $dataOutSide['filter']);
             $countDataRows = $this->model->getCountDataRows();
             $adm = $this->auth->isAuth();
-            $pagination = $this->createPagination($countDataRows, $dataInputGet);
+            $pagination = $this->createPagination($countDataRows, $dataOutSide);
 
             return [
                 'dataList' => $dataList,
                 'pag' => $pagination,
                 'countDataRows' => $countDataRows,
-                'typeList' => $dataInputGet['list'],
+                'typeList' => $dataOutSide['list'],
                 'adm' => $adm
             ];
         }

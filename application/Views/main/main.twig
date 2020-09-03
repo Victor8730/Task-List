@@ -3,18 +3,22 @@
     <div class="col-md-12 order-md-2">
         {% if adm == 1 %}
             <div class="row mb-2 py-3">
+
                 <div class="col-md-1"><span class="badge badge-info badge-pill" data-toggle="tooltip"
                                             data-placement="top"
                                             title="Tooltip on top">{{ countDataRows }}</span></div>
                 <div class="col-md-4">
                     <form>
                         <select class="form-control change-type">
-                            <option value="/main/index/?list=list" {% if typeList == 'list' %}selected{% endif %}>List</option>
-                            <option value="/main/index/?list=card" {% if typeList == 'card' %}selected{% endif %}>Card</option>
+                            <option disabled>Change style list</option>
+                            <option value="list" {% if typeList == 'list' %}selected{% endif %}>List
+                            </option>
+                            <option value="card" {% if typeList == 'card' %}selected{% endif %}>Card
+                            </option>
                         </select>
                     </form>
                 </div>
-
+                <div class="col-md-4"></div>
             </div>
             {% if typeList == 'card' %}
                 <div class="card-deck mb-3 text-center">
