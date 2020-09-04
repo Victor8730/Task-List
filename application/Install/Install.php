@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Install;
 
+use Core\Model;
 use Core\Validator;
 use Exceptions\FailedCopyException;
 use Exceptions\FailedCreateDirException;
@@ -33,6 +34,19 @@ class Install extends Validator
             }
         }
         closedir($dir);
+    }
+
+    public function initialData(array $data): void
+    {
+        $model = new Model();
+        $field = ['name', 'email', 'task'];
+        foreach ($data as $item) {
+            if($model->saveData($field, $item)){
+                echo 'load initial data - ok'."\n";
+            }else{
+                echo 'load initial data - error'."\n";
+            }
+        }
     }
 
     public function clearCache($address)

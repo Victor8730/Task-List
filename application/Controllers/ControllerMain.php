@@ -18,6 +18,14 @@ class ControllerMain extends Controller
      */
     public function actionIndex()
     {
+
+        $productRepository = $this->entityManager->getRepository('Task');
+        $products = $productRepository->findAll();
+
+        foreach ($products as $product) {
+            echo sprintf("-%s\n", $product->getName());
+        }
+
         try {
             echo $this->view->render('main/' . $this->getNameView(), $this->dataProvider());
         } catch (LoaderError $e) {

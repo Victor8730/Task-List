@@ -258,6 +258,6 @@ class __TwigTemplate_b07905da32e982309f7880a5ccb9c6301d6e2faf317e4f020ebddbbf835
 
     public function getSourceContext()
     {
-        return new Source("", "template.twig", "E:\\Programs\\OpenServer\\domains\\mvc2\\application\\Views\\template.twig");
+        return new Source("", "template.twig", "C:\\os\\domains\\mvc2\\application\\Views\\template.twig");
     }
 }

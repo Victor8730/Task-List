@@ -1,6 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Core;
+
+use Doctrine\ORM\ORMException;
+use Doctrine\ORM\Tools\Setup;
+use Doctrine\ORM\EntityManager;
 
 class Model extends Db
 {
@@ -50,14 +56,16 @@ class Model extends Db
         return (int)$arrayCount[0]['count'];
     }
 
+
     /**
      * Write data to database, use parameter ['field','field-1'] and ['value-field','value-field-1']
      * @param array $fields
      * @param array $data
+     * @return bool
      */
-    public function saveData(array $fields, array $data): void
+    public function saveData(array $fields, array $data): bool
     {
-        $this->insert($fields, $data);
+        return $this->insert($fields, $data) ? true : false;
     }
 
     /**
@@ -65,9 +73,10 @@ class Model extends Db
      * @param array $fields
      * @param array $data
      * @param int $id
+     * @return bool
      */
-    public function updateData(array $fields, array $data, int $id): void
+    public function updateData(array $fields, array $data, int $id): bool
     {
-        $this->update($fields, $data, $id);
+        return $this->update($fields, $data, $id);
     }
 }

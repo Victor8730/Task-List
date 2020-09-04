@@ -2,7 +2,7 @@
   "name": "webpagestudio/tasklist",
   "description": "MVC Task list mini",
   "minimum-stability": "stable",
-  "license": "GPL-3.0",
+  "license": "GPL-3.0-or-later",
   "authors": [
     {
       "name": "Victor G."
@@ -13,8 +13,9 @@
   },
   "require": {
     "twig/twig": "^3.0",
-    "twbs/bootstrap": "v4.5.2",
-    "jasongrimes/paginator": "1.*",
+    "twbs/bootstrap": "^4.5.2",
+    "jasongrimes/paginator": "^1.0",
+    "doctrine/orm": "^2.6.2",
     "ext-json": "*",
     "ext-pdo": "*",
     "php": ">=7.4.0"
