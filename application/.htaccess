@@ -1,4 +1,2 @@
-<FilesMatch ~ "\.(php|htm|html|js)$">
-  Order allow,deny
-  Deny from all
-</FilesMatch>
+RewriteEngine On
+RewriteRule (.*) /404

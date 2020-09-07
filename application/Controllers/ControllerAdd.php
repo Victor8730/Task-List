@@ -5,10 +5,14 @@ declare(strict_types=1);
 namespace Controllers;
 
 use Core\Controller;
+use Doctrine\ORM\OptimisticLockException;
+use Doctrine\ORM\ORMException;
+use Doctrine\ORM\TransactionRequiredException;
 use Exceptions\NotValidInputException;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
+use Models\Task as Task;
 
 class ControllerAdd extends Controller
 {
@@ -18,7 +22,7 @@ class ControllerAdd extends Controller
     public function actionIndex(): void
     {
         try {
-            echo $this->view->render('add/' . $this->getNameView() , ['adm' => $this->auth->isAuth()]);
+            echo $this->view->render('add/' . $this->getNameView(), ['adm' => $this->auth->isAuth()]);
         } catch (LoaderError $e) {
         } catch (RuntimeError $e) {
         } catch (SyntaxError $e) {
@@ -26,43 +30,70 @@ class ControllerAdd extends Controller
     }
 
     /**
-     * Check data validity
+     * Check outside data validity
      * @return array
      */
     private function validate(): array
     {
-        $task = $name = $email = $id = '';
+        $task = $name = $site = $id = '';
         $status = ($_POST['status'] === 'on') ? 1 : 0;
 
         try {
-            $email = $this->validator->checkEmail($_POST['email']);
+            $site = $this->validator->checkUrl($_POST['site']);
         } catch (NotValidInputException $e) {
-            echo $e->getMessage();
         }
 
         try {
-            $name = $this->validator->checkStr($_POST['name']);
-            $task = $this->validator->checkStr($_POST['task']);
+            $name = $this->validator->checkEmpty($_POST['name']) ? $this->validator->checkStr($_POST['name']) : '';
+            $task = $this->validator->checkEmpty($_POST['task']) ? $this->validator->checkStr($_POST['task']) : '';
         } catch (NotValidInputException $e) {
             echo $e->getMessage();
         }
 
-        return [$name, $email, $task, $status, date("Y-m-d H:i:s")];
+        return [
+            'name' => $name,
+            'site' => $site,
+            'task' => $task,
+            'status' => $status
+        ];
     }
 
     /**
+     * Check all outside parameters and admin is authorized
+     * Create Task object, set all parameters
      * Save valid data and returns json response
+     * If Auth not true, send response with text "Log in"
      */
     public function actionPost(): void
     {
         $dataOutSide = $this->validate();
+        $dataOutSide['date_add'] = new \DateTime("now");
 
-        if ($this->validator->isErrors() === false && $this->auth->isAuth() === true) {
-            $fields = ['name', 'email', 'task', 'status', 'date_add'];
-            $this->model->saveData($fields, $dataOutSide);
-            $this->ajaxResponse(true,'Successfully added!');
-        }else{
-            $this->ajaxResponse(false, 'You need to <a href="/admin" target="_blank">log in</a>');
+        if ($this->validator->isErrors() === false) {
+            if ($this->auth->isAuth() === true) {
+                $task = new Task();
+                $this->model->setParameters($task, $dataOutSide);
+
+                try {
+                    $this->model->entityManager->persist($task);
+                } catch (ORMException $e) {
+                    echo $e->getMessage();
+                }
+
+                try {
+                    $this->model->entityManager->flush();
+                } catch (OptimisticLockException $e) {
+                    echo $e->getMessage();
+                } catch (ORMException $e) {
+                    echo $e->getMessage();
+                }
+
+                $this->ajaxResponse(true, 'Successfully added!');
+            } else {
+                $this->ajaxResponse(false, 'You need to <a href="/admin" target="_blank">log in</a>');
+            }
+        } else {
+            $this->ajaxResponse(false, 'Send data not correct, check your input');
         }
     }
 
@@ -71,8 +102,9 @@ class ControllerAdd extends Controller
      */
     public function actionPut(): void
     {
-        $id = '';
+        $id = $task = '';
         $dataOutSide = $this->validate();
+        $dataOutSide['date_update'] = new \DateTime("now");
 
         try {
             $id = $this->validator->checkInt((int)$_POST['id-element']);
@@ -80,14 +112,33 @@ class ControllerAdd extends Controller
             echo $e->getMessage();
         }
 
-        if ($this->validator->isErrors() === false && $this->auth->isAuth() === true) {
-            $currentElement = $this->model->getDataById($id);
-            $dataOutSide[] = ($currentElement['task'] === $dataOutSide[2]) ? 0 : 1;
-            $fields = ['name', 'email', 'task', 'status', 'date_update', 'check_admin'];
-            $this->model->updateData($fields, $dataOutSide, $id);
-            $this->ajaxResponse(true, 'Successfully update!');
+        if ($this->validator->isErrors() === false) {
+            if ($this->auth->isAuth() === true) {
+                try {
+                    $task = $this->model->entityManager->find('\\Models\\Task', $id);
+                } catch (OptimisticLockException $e) {
+                } catch (TransactionRequiredException $e) {
+                } catch (ORMException $e) {
+                }
+
+                $taskOldData = $this->model->getParameters($task, ['task']);
+                $dataOutSide['check_admin'] = ($taskOldData['task'] === $dataOutSide['task']) ? 0 : 1;
+                $this->model->setParameters($task, $dataOutSide);
+
+                try {
+                    $this->model->entityManager->flush();
+                } catch (OptimisticLockException $e) {
+                    echo $e->getMessage();
+                } catch (ORMException $e) {
+                    echo $e->getMessage();
+                }
+
+                $this->ajaxResponse(true, 'Successfully update!');
+            } else {
+                $this->ajaxResponse(false, 'You need to <a href="/admin" target="_blank">log in</a>');
+            }
         } else {
-            $this->ajaxResponse(false, 'You need to <a href="/admin" target="_blank">log in</a>');
+            $this->ajaxResponse(false, 'Send data not correct, check your input');
         }
     }
 
@@ -96,7 +147,7 @@ class ControllerAdd extends Controller
      */
     public function actionEdit(): void
     {
-        $id = '';
+        $id = $entityManager = '';
 
         try {
             $id = $this->validator->checkInt((int)$_GET['id']);
@@ -104,14 +155,42 @@ class ControllerAdd extends Controller
             echo $e->getMessage();
         }
 
-        $dataProvider = $this->model->getDataById($id);
+        try {
+            $entityManager = $this->model->entityManager->find('\\Models\\Task', $id);
+        } catch (OptimisticLockException $e) {
+        } catch (TransactionRequiredException $e) {
+        } catch (ORMException $e) {
+        }
+
+        $dataProvider = $this->model->getParameters($entityManager, ['id', 'name', 'site', 'task', 'status']);
         $dataProvider['adm'] = $this->auth->isAuth();
 
         try {
-            echo $this->view->render('add/'.$this->getNameView(), $dataProvider);
+            echo $this->view->render('add/' . $this->getNameView(), $dataProvider);
         } catch (LoaderError $e) {
         } catch (RuntimeError $e) {
         } catch (SyntaxError $e) {
+        }
+    }
+
+    public function actionDel(): void
+    {
+        $id = $task = '';
+
+        try {
+            $id = $this->validator->checkInt((int)$_GET['id']);
+        } catch (NotValidInputException $e) {
+            echo $e->getMessage();
+        }
+
+        $task = $this->model->entityManager->getPartialReference('\\Models\\Task', array('id' => $id));
+
+        try {
+            $this->model->entityManager->remove($task);
+            $this->model->entityManager->flush();
+            $this->ajaxResponse(true, 'Successfully delete!');
+        } catch (ORMException $e) {
+            $this->ajaxResponse(false, 'Something is wrong!!!');
         }
     }
 }

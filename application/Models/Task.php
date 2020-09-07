@@ -4,58 +4,75 @@ declare(strict_types=1);
 
 namespace Models;
 
-use Doctrine\ORM\Mapping as ORM;
+use DateTime;
 
 /**
- * @ORM\Entity
- * @ORM\Table(name="task")
+ * Entity Task to work with doctrine
+ * @Entity
+ * @Table(name="task")
  */
 class Task
 {
     /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue
+     * @Id
+     * @Column(name="id", type="integer")
+     * @GeneratedValue(strategy="AUTO")
+     * @var int
      */
-    protected int $id;
+    private int $id;
 
     /**
-     * @ORM\Column(type="string")
+     * @Column(name="name", type="string")
+     * @var string
      */
-    protected string $name;
+    private string $name;
 
     /**
-     * @ORM\Column(type="string")
+     * @Column(name="site", type="string")
+     * @var string
      */
-    protected string $email;
+    private string $site;
 
     /**
-     * @ORM\Column(type="string")
+     * @Column(name="task", type="string")
+     * @var string
      */
-    protected string $task;
+    private string $task;
 
     /**
-     * @ORM\Column(type="integer")
+     * @Column(name="status", type="integer")
+     * @var ?int
      */
-    protected int $status;
+    private ?int $status;
 
     /**
-     * @ORM\Column(type="integer")
+     * @Column(name="check_admin", type="integer")
+     * @var ?int
      */
-    protected int $check_admin;
+    private ?int $checkAdmin;
 
     /**
-     * @ORM\Column(type="string")
+     * @Column(name="date_add", type="datetime")
+     * @var DateTime
      */
-    protected string $date_add;
+    private DateTime $dateAdd;
 
     /**
-     * @ORM\Column(type="string")
+     * @Column(name="date_update", type="datetime")
+     * @var DateTime
      */
-    protected string $date_update;
+    private DateTime $dateUpdate;
 
     /**
-     * @ORM\Column(type="string")
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return string
      */
     public function getName(): string
     {
@@ -73,17 +90,17 @@ class Task
     /**
      * @return string
      */
-    public function getEmail(): string
+    public function getSite(): string
     {
-        return $this->email;
+        return $this->site;
     }
 
     /**
-     * @param string $email
+     * @param string $site
      */
-    public function setEmail(string $email): void
+    public function setSite(string $site): void
     {
-        $this->email = $email;
+        $this->site = $site;
     }
 
     /**
@@ -105,7 +122,7 @@ class Task
     /**
      * @return int
      */
-    public function getStatus(): int
+    public function getStatus(): ?int
     {
         return $this->status;
     }
@@ -121,50 +138,48 @@ class Task
     /**
      * @return int
      */
-    public function getCheckAdmin(): int
+    public function getCheckAdmin(): ?int
     {
-        return $this->check_admin;
+        return $this->checkAdmin;
     }
 
     /**
-     * @param int $check_admin
+     * @param int $checkAdmin
      */
-    public function setCheckAdmin(int $check_admin): void
+    public function setCheckAdmin(int $checkAdmin): void
     {
-        $this->check_admin = $check_admin;
+        $this->checkAdmin = $checkAdmin;
     }
 
     /**
-     * @return string
+     * @return DateTime
      */
-    public function getDateAdd(): string
+    public function getDateAdd(): DateTime
     {
-        return $this->date_add;
+        return $this->dateAdd;
     }
 
     /**
-     * @param string $date_add
+     * @param DateTime $dateAdd
      */
-    public function setDateAdd(string $date_add): void
+    public function setDateAdd(DateTime $dateAdd): void
     {
-        $this->date_add = $date_add;
+        $this->dateAdd = $dateAdd;
     }
 
     /**
-     * @return string
+     * @return DateTime
      */
-    public function getDateUpdate(): string
+    public function getDateUpdate(): DateTime
     {
-        return $this->date_update;
+        return $this->dateUpdate;
     }
 
     /**
-     * @param string $date_update
+     * @param DateTime $dateUpdate
      */
-    public function setDateUpdate(string $date_update): void
+    public function setDateUpdate(DateTime $dateUpdate): void
     {
-        $this->date_update = $date_update;
+        $this->dateUpdate = $dateUpdate;
     }
-
-
 }

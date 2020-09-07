@@ -6,8 +6,11 @@ namespace Install;
 
 use Core\Model;
 use Core\Validator;
+use Doctrine\ORM\OptimisticLockException;
+use Doctrine\ORM\ORMException;
 use Exceptions\FailedCopyException;
 use Exceptions\FailedCreateDirException;
+use \Models\Task as Task;
 
 class Install extends Validator
 {
@@ -38,13 +41,24 @@ class Install extends Validator
 
     public function initialData(array $data): void
     {
-        $model = new Model();
-        $field = ['name', 'email', 'task'];
-        foreach ($data as $item) {
-            if($model->saveData($field, $item)){
-                echo 'load initial data - ok'."\n";
-            }else{
-                echo 'load initial data - error'."\n";
+        foreach ($data as $dataItem) {
+            $model = new Model();
+            $task = new Task();
+            $model->setParameters($task, $dataItem);
+
+            try {
+                $model->entityManager->persist($task);
+            } catch (ORMException $e) {
+                echo $e->getMessage();
+            }
+
+            try {
+                $model->entityManager->flush();
+                echo 'load initial data - ok' . "\n";
+            } catch (OptimisticLockException $e) {
+                echo $e->getMessage();
+            } catch (ORMException $e) {
+                echo $e->getMessage();
             }
         }
     }

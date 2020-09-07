@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace Controllers;
 
 use Core\Controller;
+use Exception;
 use Exceptions\NotValidInputException;
+use JasonGrimes\Paginator;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
@@ -18,14 +20,6 @@ class ControllerMain extends Controller
      */
     public function actionIndex()
     {
-
-        $productRepository = $this->entityManager->getRepository('Task');
-        $products = $productRepository->findAll();
-
-        foreach ($products as $product) {
-            echo sprintf("-%s\n", $product->getName());
-        }
-
         try {
             echo $this->view->render('main/' . $this->getNameView(), $this->dataProvider());
         } catch (LoaderError $e) {
@@ -66,15 +60,17 @@ class ControllerMain extends Controller
     {
         $sort = $_GET['sort'] ?? 'id';
         $order = $_GET['order'] ?? 'DESC';
+        $name = $_POST['name'] ?? $_GET['name'] ?? '';
         $list = $_POST['list'] ?? $_COOKIE['list'] ?? $_GET['list'] ?? 'list';
-        $limit = $_POST['limit'] ?? $_COOKIE['limit'] ?? $_GET['limit'] ?? 3;
-        $start = $_GET['start'] ?? 0;
+        $limit = ($list !== 'card') ? $_POST['limit'] ?? $_COOKIE['limit'] ?? $_GET['limit'] ?? 3 : 3;
+        $start = $_GET['start'] ?? 1;
         $filter = [];
 
         try {
             $sort = $this->validator->checkStr($sort);
             $order = $this->validator->checkStr($order);
             $list = $this->validator->checkStr($list);
+            $name = $this->validator->checkStr($name);
         } catch (NotValidInputException $e) {
             echo $e->getMessage();
         }
@@ -87,7 +83,7 @@ class ControllerMain extends Controller
             echo $e->getMessage();
         }
 
-        return ['sort' => $sort, 'list' => $list, 'order' => $order, 'filter' => $filter];
+        return ['sort' => $sort, 'list' => $list, 'name' => $name, 'order' => $order, 'filter' => $filter];
     }
 
     /**
@@ -96,26 +92,49 @@ class ControllerMain extends Controller
      */
     private function dataProvider(): array
     {
-        $dataOutSide = $this->validate();
+        $dataFromOutside = $this->validate();
 
         if ($this->validator->isErrors() === false && $this->isAjax === false) {
-            $sortData = $dataOutSide['sort'] . ' ' . $dataOutSide['order'];
-            $dataList = $this->model->getData($sortData, $dataOutSide['filter']);
-            $CountAllRows = $this->model->getCountAllRows();
-            $countStatusComplete = $this->model->getCountAllRows();
-            $adm = $this->auth->isAuth();
+            $entityManager = $paginator = '';
+            $search = (!empty($dataFromOutside['name'])) ? ['name' => $dataFromOutside['name']] : [];
 
-            $urlPattern = '/main/index?sort=' . $dataOutSide['sort'] . '&list=' . $dataOutSide['list'] . '&order=' . $dataOutSide['order'] . '&start=(:num)';
-            $paginator = new \JasonGrimes\Paginator($CountAllRows, $dataOutSide['filter']['limit'], $dataOutSide['filter']['start'], $urlPattern);
+            try {
+                $entityManager = $this->model->entityManager->getRepository('\\Models\\Task');
+            } catch (Exception $e) {
+                echo $e->getMessage();
+            }
+
+            $tasks = $entityManager->findBy(
+                $search,
+                [$dataFromOutside['sort'] => $dataFromOutside['order']],
+                $dataFromOutside['filter']['limit'],
+                ($dataFromOutside['filter']['start'] - 1) * $dataFromOutside['filter']['limit']
+            );
+            $countAllRows = $entityManager->count($search);
+
+            try {
+                $paginator = new Paginator(
+                    $countAllRows,
+                    $dataFromOutside['filter']['limit'],
+                    $dataFromOutside['filter']['start'],
+                    '/main/index?sort=' . $dataFromOutside['sort'] . '&list=' . $dataFromOutside['list'] . '&name=' . $dataFromOutside['name'] . '&order=' . $dataFromOutside['order'] . '&start=(:num)'
+                );
+                $paginator->setMaxPagesToShow(5);
+            } catch (Exception $e) {
+                echo $e->getMessage();
+            }
+
+            $search['status'] = 1;
 
             return [
-                'dataList' => $dataList,
+                'dataList' => $tasks,
                 'paginator' => $paginator,
-                'countDataRows' => $CountAllRows,
-                'countStatusComplete' => $countStatusComplete,
-                'typeList' => $dataOutSide['list'],
-                'perPage' => $dataOutSide['filter']['limit'],
-                'adm' => $adm
+                'countDataRows' => $countAllRows,
+                'countStatusComplete' => $entityManager->count($search),
+                'typeList' => $dataFromOutside['list'],
+                'name' => $dataFromOutside['name'],
+                'filter' => $dataFromOutside['filter'],
+                'adm' => $this->auth->isAuth()
             ];
         }
     }

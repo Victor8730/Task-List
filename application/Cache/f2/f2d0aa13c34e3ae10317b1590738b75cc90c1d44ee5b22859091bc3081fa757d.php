@@ -43,41 +43,56 @@ class __TwigTemplate_7069e815200705df5d79ee59e0e6f13c5e1f71003817be04738d396b803
         $macros = $this->macros;
         // line 2
         echo "<li class=\"list-group-item d-flex justify-content-between lh-condensed\">
+    <div class=\"col-md-1 text-center\">
+        #
+    </div>
     <div class=\"col-md-2 text-center\">
         <h6 class=\"my-0 d-inline-block\" >Name</h6>
-        <a href=\"/main/index?sort=name&order=ASC&start=";
-        // line 5
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["url"] ?? null), "filter", [], "any", false, false, false, 5), "start", [], "any", false, false, false, 5), "html", null, true);
-        echo "\"><i class=\"fa fa-arrow-up\" aria-hidden=\"true\"></i></a>
-        <a href=\"/main/index?sort=name&order=DESC&start=";
-        // line 6
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["url"] ?? null), "filter", [], "any", false, false, false, 6), "start", [], "any", false, false, false, 6), "html", null, true);
-        echo "\"><i class=\"fa fa-arrow-down\" aria-hidden=\"true\"></i></a>
+        <a href=\"/main/index?sort=name&name=";
+        // line 8
+        echo twig_escape_filter($this->env, ($context["name"] ?? null), "html", null, true);
+        echo "&order=ASC&start=";
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["filter"] ?? null), "start", [], "any", false, false, false, 8), "html", null, true);
+        echo "\"><i class=\"fa fa-arrow-up text-info\" aria-hidden=\"true\"></i></a>
+        <a href=\"/main/index?sort=name&name=";
+        // line 9
+        echo twig_escape_filter($this->env, ($context["name"] ?? null), "html", null, true);
+        echo "&order=DESC&start=";
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["filter"] ?? null), "start", [], "any", false, false, false, 9), "html", null, true);
+        echo "\"><i class=\"fa fa-arrow-down text-info\" aria-hidden=\"true\"></i></a>
     </div>
     <div class=\"col-md-3 text-center\">
-        <h6 class=\"my-0 d-inline-block\">Email</h6>
-        <a href=\"/main/index?sort=email&order=ASC&start=";
-        // line 10
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["url"] ?? null), "filter", [], "any", false, false, false, 10), "start", [], "any", false, false, false, 10), "html", null, true);
-        echo "\"><i class=\"fa fa-arrow-up\" aria-hidden=\"true\"></i></a>
-        <a href=\"/main/index?sort=email&order=DESC&start=";
-        // line 11
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["url"] ?? null), "filter", [], "any", false, false, false, 11), "start", [], "any", false, false, false, 11), "html", null, true);
-        echo "\"><i class=\"fa fa-arrow-down\" aria-hidden=\"true\"></i></a>
+        <h6 class=\"my-0 d-inline-block\">Site</h6>
+        <a href=\"/main/index?sort=site&name=";
+        // line 13
+        echo twig_escape_filter($this->env, ($context["name"] ?? null), "html", null, true);
+        echo "&order=ASC&start=";
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["filter"] ?? null), "start", [], "any", false, false, false, 13), "html", null, true);
+        echo "\"><i class=\"fa fa-arrow-up text-info\" aria-hidden=\"true\"></i></a>
+        <a href=\"/main/index?sort=site&name=";
+        // line 14
+        echo twig_escape_filter($this->env, ($context["name"] ?? null), "html", null, true);
+        echo "&order=DESC&start=";
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["filter"] ?? null), "start", [], "any", false, false, false, 14), "html", null, true);
+        echo "\"><i class=\"fa fa-arrow-down text-info\" aria-hidden=\"true\"></i></a>
     </div>
-    <div class=\"col-md-4 text-center\">
+    <div class=\"col-md-3 text-center\">
         <h6 class=\"my-0\">Text task</h6>
     </div>
     <div class=\"col-md-2 text-center\">
         <h6 class=\"my-0 d-inline-block\">Status</h6>
-        <a href=\"/main/index?sort=status&order=ASC&start=";
-        // line 18
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["url"] ?? null), "filter", [], "any", false, false, false, 18), "start", [], "any", false, false, false, 18), "html", null, true);
-        echo "\"><i class=\"fa fa-arrow-up\" aria-hidden=\"true\"></i></a>
-        <a href=\"/main/index?sort=status&order=DESC&start=";
-        // line 19
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["url"] ?? null), "filter", [], "any", false, false, false, 19), "start", [], "any", false, false, false, 19), "html", null, true);
-        echo "\"><i class=\"fa fa-arrow-down\" aria-hidden=\"true\"></i></a>
+        <a href=\"/main/index?sort=status&name=";
+        // line 21
+        echo twig_escape_filter($this->env, ($context["name"] ?? null), "html", null, true);
+        echo "&order=ASC&start=";
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["filter"] ?? null), "start", [], "any", false, false, false, 21), "html", null, true);
+        echo "\"><i class=\"fa fa-arrow-up text-info\" aria-hidden=\"true\"></i></a>
+        <a href=\"/main/index?sort=status&name=";
+        // line 22
+        echo twig_escape_filter($this->env, ($context["name"] ?? null), "html", null, true);
+        echo "&order=DESC&start=";
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["filter"] ?? null), "start", [], "any", false, false, false, 22), "html", null, true);
+        echo "\"><i class=\"fa fa-arrow-down text-info\" aria-hidden=\"true\"></i></a>
     </div>
     <div class=\"col-md-1 text-center\">
         <h6 class=\"my-0\"></h6>
@@ -93,11 +108,11 @@ class __TwigTemplate_7069e815200705df5d79ee59e0e6f13c5e1f71003817be04738d396b803
 
     public function getDebugInfo()
     {
-        return array (  79 => 19,  75 => 18,  65 => 11,  61 => 10,  54 => 6,  50 => 5,  45 => 2,  38 => 1,);
+        return array (  92 => 22,  86 => 21,  74 => 14,  68 => 13,  59 => 9,  53 => 8,  45 => 2,  38 => 1,);
     }
 
     public function getSourceContext()
     {
-        return new Source("", "main/head.twig", "C:\\os\\domains\\mvc2\\application\\Views\\main\\head.twig");
+        return new Source("", "main/head.twig", "E:\\Programs\\OpenServer\\domains\\mvc2\\application\\Views\\main\\head.twig");
     }
 }

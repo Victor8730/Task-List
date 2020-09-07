@@ -4,79 +4,80 @@ declare(strict_types=1);
 
 namespace Core;
 
+use application\Config as Config;
 use Doctrine\ORM\ORMException;
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
 
-class Model extends Db
+/**
+ * Model for creating connections and other methods
+ * such as creating, modifying, deleting records from the database
+ * @package Core
+ */
+class Model extends Config
 {
+    public object $entityManager;
+
     /**
-     * Get data from the database
-     * First parameter type sorting
-     * Second - filter, num and count
-     * Third - if need get one row, select id. But it's better to use getDataById
-     * @param string|null $sort
-     * @param array|null $filter
-     * @param int|null $id
+     * Model constructor.
+     * Inherited configuration object, get the necessary parameters
+     * Making the initial setup for working with the Doctrine ORM
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $config = Setup::createAnnotationMetadataConfiguration($this->paths, $this->isDevMode);
+
+        try {
+            $this->entityManager = EntityManager::create($this->dbParams, $config);
+            try {
+                $this->entityManager->getConnection()->connect();
+            } catch (\Exception $e) {
+                echo $e->getMessage();
+            }
+        } catch (ORMException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function __toString()
+    {
+        return '';
+    }
+
+    /**
+     * Set parameter object
+     * @param object $object
+     * @param array $params
+     * @return object
+     */
+    public function setParameters(object $object, array $params): object
+    {
+        foreach ($params as $k => $p) {
+            $key = lcfirst(str_replace([' ', '_', '-'], '', ucwords($k, ' _-')));
+            if (property_exists($object, $key)) {
+                $object->{'set' . ucfirst($key)}($p);
+            }
+        }
+
+        return $object;
+    }
+
+    /**
+     * Get parameter by object
+     * @param object $object
+     * @param array $params
      * @return array
      */
-    public function getData(?string $sort = null, ?array $filter = null, ?int $id = null): ?array
+    public function getParameters(object $object, array $params): array
     {
-        return $this->load($id, $sort, $filter);
-    }
+        $result = [];
+        foreach ($params as $param) {
+            if (property_exists($object, $param)) {
+                $result[$param] = $object->{'get' . ucfirst($param)}();
+            }
+        }
 
-    /**
-     * Get data by id
-     * @param int $id
-     * @return array
-     */
-    public function getDataById(int $id): ?array
-    {
-        $dataId = $this->load($id);
-        return $dataId[0];
-    }
-
-    /**
-     * Get the number of lines in the database
-     * @return int
-     */
-    public function getCountAllRows(): int
-    {
-        $arrayCount = $this->getData();
-        return (int)$arrayCount[0]['count'];
-    }
-
-    /**
-     * Get the number of lines in the database
-     * @return int
-     */
-    public function getCountStatusComplete(): int
-    {
-        $arrayCount = $this->getData();
-        return (int)$arrayCount[0]['count'];
-    }
-
-
-    /**
-     * Write data to database, use parameter ['field','field-1'] and ['value-field','value-field-1']
-     * @param array $fields
-     * @param array $data
-     * @return bool
-     */
-    public function saveData(array $fields, array $data): bool
-    {
-        return $this->insert($fields, $data) ? true : false;
-    }
-
-    /**
-     * Update data in the database use first parameter ['field','field-1'] and second ['value-field','value-field-1']  and third - id row in db
-     * @param array $fields
-     * @param array $data
-     * @param int $id
-     * @return bool
-     */
-    public function updateData(array $fields, array $data, int $id): bool
-    {
-        return $this->update($fields, $data, $id);
+        return $result;
     }
 }

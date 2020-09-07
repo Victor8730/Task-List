@@ -6,9 +6,9 @@ namespace Install;
 
 $dirFrontEnd = dirname(__DIR__, 2);
 
-require_once $dirFrontEnd. '/application/vendor/autoload.php';
+require_once $dirFrontEnd . '/application/vendor/autoload.php';
 
 $update = new Install();
 
-$update->copyFileAndDirectory($dirFrontEnd.'/application/vendor/twbs/bootstrap/dist', $dirFrontEnd);
-$update->clearCache($dirFrontEnd.'/application');
+$update->copyFileAndDirectory($dirFrontEnd . '/application/vendor/twbs/bootstrap/dist', $dirFrontEnd);
+$update->clearCache($dirFrontEnd . '/application');

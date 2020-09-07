@@ -45,6 +45,20 @@ class  Validator
     }
 
     /**
+     * Check is the variable empty
+     * @param $val
+     * @return bool
+     * @throws NotValidInputException
+     */
+    public function checkEmpty($val):bool{
+        if(!empty($val)){
+            return true;
+        }else{
+            $this->setErrors(true);
+            throw new NotValidInputException($val);
+        }
+    }
+    /**
      * String validation
      * @param $val
      * @return string
@@ -52,7 +66,7 @@ class  Validator
      */
     public function checkStr($val): string
     {
-        if (!is_string($val) || empty($val)) {
+        if (!is_string($val)) {
             $this->setErrors(true);
             throw new NotValidInputException($val);
         } else {
@@ -69,6 +83,23 @@ class  Validator
     public function checkEmail(?string $val): string
     {
         $check = filter_var($val, FILTER_VALIDATE_EMAIL);
+        if ($check !== false) {
+            return $val;
+        } else {
+            $this->setErrors(true);
+            throw new NotValidInputException($val);
+        }
+    }
+
+    /**
+     * url validation
+     * @param string|null $val
+     * @return string
+     * @throws NotValidInputException
+     */
+    public function checkUrl(?string $val): string
+    {
+        $check = filter_var('http://'.$val, FILTER_VALIDATE_URL);
         if ($check !== false) {
             return $val;
         } else {

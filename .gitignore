@@ -1,2 +1,5 @@
 # phpstorm project files
 .idea
+application/Config.php
+application/Cache/*
+application/vendor/*

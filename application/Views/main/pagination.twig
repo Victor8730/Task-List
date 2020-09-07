@@ -1,21 +1,23 @@
 <nav aria-label="navigation example text-center">
-        {#{{ pag | raw }}#}
+    {# {{ pag | raw }} #}
     {% if paginator.numPages > 1 %}
         <ul class="pagination">
             {% if paginator.prevUrl %}
-                <li class="page-item"><a href="{{ paginator.prevUrl }}" class="page-link">Previous</a></li>
+                <li class="page-item"><a href="{{ paginator.prevUrl }}" class="page-link text-info">Previous</a></li>
             {% endif %}
 
             {% for page in paginator.pages %}
                 {% if page.url %}
-                    <li {{ page.isCurrent ? 'class="page-item active disabled"' : '' }}><a href="{{ page.url }}" class="page-link">{{ page.num }}</a></li>
+                    <li {{ page.isCurrent ? 'class="page-item active disabled"' : '' }}><a href="{{ page.url }}"
+                                                                                           class="page-link {{ page.isCurrent ? '' : 'text-info' }}">{{ page.num }}</a>
+                    </li>
                 {% else %}
-                    <li class="page-item disabled"><span>{{ page.num }}</span></li>
+                    <li class="page-item disabled"><span class="page-link text-info">{{ page.num }}</span></li>
                 {% endif %}
             {% endfor %}
 
             {% if paginator.nextUrl %}
-                <li class="page-item"><a href="{{ paginator.nextUrl }}" class="page-link">Next</a></li>
+                <li class="page-item"><a href="{{ paginator.nextUrl }}" class="page-link text-info">Next</a></li>
             {% endif %}
         </ul>
     {% endif %}

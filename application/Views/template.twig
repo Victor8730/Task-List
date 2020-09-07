@@ -11,6 +11,7 @@
     <link href="/css/form-validation.css" rel="stylesheet">
     <link href="/css/font-awesome.css" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css" rel="stylesheet">
 </head>
 <body class="bg-light">
 <header>
@@ -67,20 +68,20 @@
     <footer class="my-5 pt-5 text-muted text-center text-small">
         <p class="mb-1">&copy; 2020 Webpagestudio</p>
         <ul class="list-group list-group-horizontal d-inline-flex">
-            <li class="list-group-item"><a href="/">Home</a></li>
-            <li class="list-group-item"><a href="/admin">Admin</a></li>
-            <li class="list-group-item"><a href="/add">Add task</a></li>
+            <li class="list-group-item"><a href="/" class="text-info">Home</a></li>
+            <li class="list-group-item"><a href="/admin" class="text-info">Admin</a></li>
+            <li class="list-group-item"><a href="/add" class="text-info">Add task</a></li>
         </ul>
-        <p>{{ timeGeneration }}</p>
     </footer>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 <script src="/js/bootstrap.js"></script>
 <script src="/js/bootstrap.bundle.js"></script>
 <script>
     $(function () {
-        $('[data-toggle="tooltip"]').tooltip();
+        $('[data-toggle="tooltip"],.tooltip-show').tooltip({'placement': 'top'});
     });
 
     (function () {
@@ -127,20 +128,29 @@
             }
         });
     });
-    $(".logout-button").on('click', function () {
+    $(".logout-button, .delete-task").on('click', function () {
         event.preventDefault();
-        let action = $(this).attr('url');
-        $.ajax({
-            type: "POST",
-            url: action,
-            dataType: 'json',
-            success: function (answer) {
-                if (answer['success'] === true) {
-                    $('.success-enter').removeClass('d-none').text(answer['message']).show(2000).hide(5000);
-                    setTimeout(function () {
-                        document.location.href = ''
-                    }, 2500);
-                }
+        let action = $(this).attr('url') ?? $(this).attr('href');
+        $.confirm({
+            title: 'Confirm?',
+            content: 'Confirm this action or not',
+            buttons: {
+                confirm: function () {
+                    $.ajax({
+                        type: "POST",
+                        url: action,
+                        dataType: 'json',
+                        success: function (answer) {
+                            if (answer['success'] === true) {
+                                showAlert(answer['message'], 'success');
+                                setTimeout(function () {
+                                    document.location.href = ''
+                                }, 3500);
+                            }
+                        }
+                    });
+                },
+                cancel: function () {}
             }
         });
     });
@@ -161,7 +171,6 @@
             }
         });
     });
-
     $(".change-count").on('change', function () {
         let limit = $(this).val();
         $.ajax({

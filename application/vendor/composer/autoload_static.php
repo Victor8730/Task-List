@@ -17,6 +17,10 @@ class ComposerStaticInit00735373f4cfd5f8246bd52d1219bb03
     );
 
     public static $prefixLengthsPsr4 = array (
+        'a' => 
+        array (
+            'application\\' => 12,
+        ),
         'T' => 
         array (
             'Twig\\' => 5,
@@ -37,6 +41,10 @@ class ComposerStaticInit00735373f4cfd5f8246bd52d1219bb03
         array (
             'Psr\\Container\\' => 14,
             'PackageVersions\\' => 16,
+        ),
+        'M' => 
+        array (
+            'Models\\' => 7,
         ),
         'I' => 
         array (
@@ -68,6 +76,10 @@ class ComposerStaticInit00735373f4cfd5f8246bd52d1219bb03
     );
 
     public static $prefixDirsPsr4 = array (
+        'application\\' => 
+        array (
+            0 => __DIR__ . '/../../..' . '/application',
+        ),
         'Twig\\' => 
         array (
             0 => __DIR__ . '/..' . '/twig/twig/src',
@@ -115,6 +127,10 @@ class ComposerStaticInit00735373f4cfd5f8246bd52d1219bb03
         'PackageVersions\\' => 
         array (
             0 => __DIR__ . '/..' . '/ocramius/package-versions/src/PackageVersions',
+        ),
+        'Models\\' => 
+        array (
+            0 => __DIR__ . '/../../..' . '/application/Models',
         ),
         'Install\\' => 
         array (

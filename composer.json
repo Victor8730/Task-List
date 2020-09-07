@@ -1,11 +1,11 @@
 {
   "name": "webpagestudio/tasklist",
-  "description": "MVC Task list mini",
+  "description": "Task list - mini app with MVC structure",
   "minimum-stability": "stable",
   "license": "GPL-3.0-or-later",
   "authors": [
     {
-      "name": "Victor G."
+      "name": "Victor Galiuzov"
     }
   ],
   "config": {
@@ -25,7 +25,9 @@
       "Core\\": "application/Core",
       "Exceptions\\": "application/Exceptions",
       "Controllers\\": "application/Controllers",
-      "Install\\": "application/Install"
+      "Models\\": "application/Models",
+      "Install\\": "application/Install",
+      "application\\": "application"
     }
   },
   "scripts": {

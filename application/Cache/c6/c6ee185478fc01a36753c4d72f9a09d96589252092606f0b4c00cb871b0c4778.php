@@ -52,24 +52,23 @@ class __TwigTemplate_072919fa5d8c672658f8f010fb26aca46ba0383b43d07be427fc5bf7010
         // line 4
         if ((0 === twig_compare(($context["adm"] ?? null), 1))) {
             // line 5
-            echo "
-            <div class=\"card text-center\">
+            echo "            <div class=\"card text-center\">
                 <div class=\"card-header\">
                     <div class=\"row\">
                         <div class=\"col-md-3\">
                             <form>
-                                <select class=\"form-control change-type\" data-toggle=\"tooltip\" data-placement=\"top\"
+                                <select class=\"form-control change-type tooltip-show\"
                                         title=\"Select the type of task list\">
                                     <option disabled>Change style list</option>
                                     <option value=\"list\" ";
-            // line 14
+            // line 13
             if ((0 === twig_compare(($context["typeList"] ?? null), "list"))) {
                 echo "selected";
             }
             echo ">List
                                     </option>
                                     <option value=\"card\" ";
-            // line 16
+            // line 15
             if ((0 === twig_compare(($context["typeList"] ?? null), "card"))) {
                 echo "selected";
             }
@@ -80,62 +79,82 @@ class __TwigTemplate_072919fa5d8c672658f8f010fb26aca46ba0383b43d07be427fc5bf7010
                         </div>
                         <div class=\"col-md-3\">
                             <form>
-                                <select class=\"form-control change-count\" data-toggle=\"tooltip\" data-placement=\"top\"
+                                <select class=\"form-control change-count tooltip-show\"
                                         title=\"How many elements per page\">
                                     <option disabled>Change per page</option>
                                     <option value=\"3\" ";
-            // line 26
-            if ((0 === twig_compare(($context["perPage"] ?? null), 3))) {
+            // line 25
+            if ((0 === twig_compare(twig_get_attribute($this->env, $this->source, ($context["filter"] ?? null), "limit", [], "any", false, false, false, 25), 3))) {
                 echo "selected";
             }
             echo ">3</option>
-                                    <option value=\"5\" ";
-            // line 27
-            if ((0 === twig_compare(($context["perPage"] ?? null), 5))) {
-                echo "selected";
-            }
-            echo ">5</option>
                                     ";
-            // line 28
+            // line 26
             if ((0 === twig_compare(($context["typeList"] ?? null), "list"))) {
-                // line 29
-                echo "                                    <option value=\"10\" ";
-                if ((0 === twig_compare(($context["perPage"] ?? null), 10))) {
+                // line 27
+                echo "                                        <option value=\"5\" ";
+                if ((0 === twig_compare(twig_get_attribute($this->env, $this->source, ($context["filter"] ?? null), "limit", [], "any", false, false, false, 27), 5))) {
+                    echo "selected";
+                }
+                echo ">5</option>
+                                        <option value=\"10\" ";
+                // line 28
+                if ((0 === twig_compare(twig_get_attribute($this->env, $this->source, ($context["filter"] ?? null), "limit", [], "any", false, false, false, 28), 10))) {
                     echo "selected";
                 }
                 echo ">10</option>
-                                    <option value=\"15\" ";
-                // line 30
-                if ((0 === twig_compare(($context["perPage"] ?? null), 15))) {
+                                        <option value=\"15\" ";
+                // line 29
+                if ((0 === twig_compare(twig_get_attribute($this->env, $this->source, ($context["filter"] ?? null), "limit", [], "any", false, false, false, 29), 15))) {
                     echo "selected";
                 }
                 echo ">15</option>
                                     ";
             }
-            // line 32
+            // line 31
             echo "                                </select>
                             </form>
                         </div>
-                        <div class=\"col-md-3\">
-                            <div class=\"input-group\">
-                                <div class=\"input-group-prepend\">
-                                    <div class=\"input-group-text\"><i class=\"fa fa-user\" aria-hidden=\"true\"></i></div>
+                        <div class=\"col-md-4\">
+                            <form method=\"post\">
+                                <div class=\"input-group\">
+                                    <div class=\"input-group-prepend\">
+                                        <div class=\"input-group-text\"><i class=\"fa fa-user\" aria-hidden=\"true\"></i>
+                                        </div>
+                                    </div>
+                                    <input type=\"text\" class=\"form-control user-search\" name=\"name\" placeholder=\"Name\"
+                                           value=\"";
+            // line 42
+            echo twig_escape_filter($this->env, ($context["name"] ?? null), "html", null, true);
+            echo "\">
+                                    ";
+            // line 43
+            if ((0 !== twig_compare(($context["name"] ?? null), ""))) {
+                // line 44
+                echo "                                        <a href=\"/\" type=\"submit\" class=\"btn btn-secondary tooltip-show\"
+                                           title=\"Close Filter\"><i class=\"fa fa-times-circle\"
+                                                                   aria-hidden=\"true\"></i></a>
+                                    ";
+            }
+            // line 48
+            echo "                                    <button type=\"submit\" class=\"btn btn-secondary tooltip-show\" title=\"Filter apply\">
+                                        Search
+                                    </button>
                                 </div>
-                                <input type=\"text\" class=\"form-control user-search\" name=\"user\" placeholder=\"Name\">
-                            </div>
+                            </form>
                         </div>
-                        <div class=\"col-md-3\">
-                            <button type=\"button\" class=\"btn btn-outline-secondary\" data-toggle=\"tooltip\" data-placement=\"top\"
+                        <div class=\"col-md-2\">
+                            <button type=\"button\" class=\"btn btn-outline-secondary\" data-toggle=\"tooltip\"
                                     title=\"Number of all tasks\">
                                 <span class=\"badge badge-secondary badge-pill\">";
-            // line 46
+            // line 57
             echo twig_escape_filter($this->env, ($context["countDataRows"] ?? null), "html", null, true);
             echo "</span>
                             </button>
-                            <button type=\"button\" class=\"btn btn-outline-success\" data-toggle=\"tooltip\" data-placement=\"top\"
+                            <button type=\"button\" class=\"btn btn-outline-success\" data-toggle=\"tooltip\"
                                     title=\"Completed tasks\">
-                                 <span class=\"badge badge-success badge-pill\">";
-            // line 50
+                                <span class=\"badge badge-success badge-pill\">";
+            // line 61
             echo twig_escape_filter($this->env, ($context["countStatusComplete"] ?? null), "html", null, true);
             echo "</span>
                             </button>
@@ -144,47 +163,47 @@ class __TwigTemplate_072919fa5d8c672658f8f010fb26aca46ba0383b43d07be427fc5bf7010
                 </div>
                 <div class=\"card-body\">
                     ";
-            // line 56
+            // line 67
             if ((0 === twig_compare(($context["typeList"] ?? null), "card"))) {
-                // line 57
+                // line 68
                 echo "                        <div class=\"card-deck mb-3 text-center\">
                             ";
-                // line 58
-                $this->loadTemplate("main/card.twig", "main/main.twig", 58)->display($context);
-                // line 59
+                // line 69
+                $this->loadTemplate("main/card.twig", "main/main.twig", 69)->display($context);
+                // line 70
                 echo "                        </div>
                     ";
             } else {
-                // line 61
+                // line 72
                 echo "                        <ul class=\"list-group mb-3 listTask\">
                             ";
-                // line 62
-                $this->loadTemplate("main/head.twig", "main/main.twig", 62)->display($context);
-                // line 63
+                // line 73
+                $this->loadTemplate("main/head.twig", "main/main.twig", 73)->display($context);
+                // line 74
                 echo "                            ";
-                $this->loadTemplate("main/list.twig", "main/main.twig", 63)->display($context);
-                // line 64
+                $this->loadTemplate("main/list.twig", "main/main.twig", 74)->display($context);
+                // line 75
                 echo "                        </ul>
                     ";
             }
-            // line 66
+            // line 77
             echo "                </div>
                 <div class=\"card-footer text-muted\">
                     ";
-            // line 68
-            $this->loadTemplate("main/pagination.twig", "main/main.twig", 68)->display($context);
-            // line 69
+            // line 79
+            $this->loadTemplate("main/pagination.twig", "main/main.twig", 79)->display($context);
+            // line 80
             echo "                </div>
             </div>
         ";
         } else {
-            // line 72
+            // line 83
             echo "            <div class=\"col-md-12 text-center\"><i class=\"fa fa-key fa-3x\" aria-hidden=\"true\"></i>
                 <h3 class=\"h3 mb-3 font-weight-normal\">You need to <a href=\"/admin\" target=\"_blank\">log in</a></h3>
             </div>
         ";
         }
-        // line 76
+        // line 87
         echo "    </div>
 ";
     }
@@ -201,11 +220,11 @@ class __TwigTemplate_072919fa5d8c672658f8f010fb26aca46ba0383b43d07be427fc5bf7010
 
     public function getDebugInfo()
     {
-        return array (  188 => 76,  182 => 72,  177 => 69,  175 => 68,  171 => 66,  167 => 64,  164 => 63,  162 => 62,  159 => 61,  155 => 59,  153 => 58,  150 => 57,  148 => 56,  139 => 50,  132 => 46,  116 => 32,  109 => 30,  102 => 29,  100 => 28,  94 => 27,  88 => 26,  73 => 16,  66 => 14,  55 => 5,  53 => 4,  50 => 3,  46 => 2,  35 => 1,);
+        return array (  207 => 87,  201 => 83,  196 => 80,  194 => 79,  190 => 77,  186 => 75,  183 => 74,  181 => 73,  178 => 72,  174 => 70,  172 => 69,  169 => 68,  167 => 67,  158 => 61,  151 => 57,  140 => 48,  134 => 44,  132 => 43,  128 => 42,  115 => 31,  108 => 29,  102 => 28,  95 => 27,  93 => 26,  87 => 25,  72 => 15,  65 => 13,  55 => 5,  53 => 4,  50 => 3,  46 => 2,  35 => 1,);
     }
 
     public function getSourceContext()
     {
-        return new Source("", "main/main.twig", "C:\\os\\domains\\mvc2\\application\\Views\\main\\main.twig");
+        return new Source("", "main/main.twig", "E:\\Programs\\OpenServer\\domains\\mvc2\\application\\Views\\main\\main.twig");
     }
 }

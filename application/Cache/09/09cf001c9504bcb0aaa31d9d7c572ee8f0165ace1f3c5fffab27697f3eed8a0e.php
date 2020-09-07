@@ -48,6 +48,7 @@ class __TwigTemplate_b07905da32e982309f7880a5ccb9c6301d6e2faf317e4f020ebddbbf835
     <link href=\"/css/form-validation.css\" rel=\"stylesheet\">
     <link href=\"/css/font-awesome.css\" rel=\"stylesheet\">
     <link href=\"/css/style.css\" rel=\"stylesheet\">
+    <link href=\"https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css\" rel=\"stylesheet\">
 </head>
 <body class=\"bg-light\">
 <header>
@@ -80,15 +81,15 @@ class __TwigTemplate_b07905da32e982309f7880a5ccb9c6301d6e2faf317e4f020ebddbbf835
                 <i class=\"fa fa-info-circle fa-2x mr-4\" aria-hidden=\"true\"></i>
             </button>
             ";
-        // line 45
+        // line 46
         if ((0 === twig_compare(($context["adm"] ?? null), 1))) {
-            // line 46
-            echo "                ";
-            $this->loadTemplate("admin/logout.twig", "template.twig", 46)->display($context);
             // line 47
+            echo "                ";
+            $this->loadTemplate("admin/logout.twig", "template.twig", 47)->display($context);
+            // line 48
             echo "            ";
         }
-        // line 48
+        // line 49
         echo "        </div>
     </div>
 </header>
@@ -105,31 +106,28 @@ class __TwigTemplate_b07905da32e982309f7880a5ccb9c6301d6e2faf317e4f020ebddbbf835
 
     <div class=\"row content\">
         ";
-        // line 63
+        // line 64
         $this->displayBlock('content', $context, $blocks);
-        // line 65
+        // line 66
         echo "    </div>
 
     <footer class=\"my-5 pt-5 text-muted text-center text-small\">
         <p class=\"mb-1\">&copy; 2020 Webpagestudio</p>
         <ul class=\"list-group list-group-horizontal d-inline-flex\">
-            <li class=\"list-group-item\"><a href=\"/\">Home</a></li>
-            <li class=\"list-group-item\"><a href=\"/admin\">Admin</a></li>
-            <li class=\"list-group-item\"><a href=\"/add\">Add task</a></li>
+            <li class=\"list-group-item\"><a href=\"/\" class=\"text-info\">Home</a></li>
+            <li class=\"list-group-item\"><a href=\"/admin\" class=\"text-info\">Admin</a></li>
+            <li class=\"list-group-item\"><a href=\"/add\" class=\"text-info\">Add task</a></li>
         </ul>
-        <p>";
-        // line 74
-        echo twig_escape_filter($this->env, ($context["timeGeneration"] ?? null), "html", null, true);
-        echo "</p>
     </footer>
 </div>
 
 <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js\" crossorigin=\"anonymous\"></script>
+<script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js\"></script>
 <script src=\"/js/bootstrap.js\"></script>
 <script src=\"/js/bootstrap.bundle.js\"></script>
 <script>
     \$(function () {
-        \$('[data-toggle=\"tooltip\"]').tooltip();
+        \$('[data-toggle=\"tooltip\"],.tooltip-show').tooltip({'placement': 'top'});
     });
 
     (function () {
@@ -176,20 +174,29 @@ class __TwigTemplate_b07905da32e982309f7880a5ccb9c6301d6e2faf317e4f020ebddbbf835
             }
         });
     });
-    \$(\".logout-button\").on('click', function () {
+    \$(\".logout-button, .delete-task\").on('click', function () {
         event.preventDefault();
-        let action = \$(this).attr('url');
-        \$.ajax({
-            type: \"POST\",
-            url: action,
-            dataType: 'json',
-            success: function (answer) {
-                if (answer['success'] === true) {
-                    \$('.success-enter').removeClass('d-none').text(answer['message']).show(2000).hide(5000);
-                    setTimeout(function () {
-                        document.location.href = ''
-                    }, 2500);
-                }
+        let action = \$(this).attr('url') ?? \$(this).attr('href');
+        \$.confirm({
+            title: 'Confirm?',
+            content: 'Confirm this action or not',
+            buttons: {
+                confirm: function () {
+                    \$.ajax({
+                        type: \"POST\",
+                        url: action,
+                        dataType: 'json',
+                        success: function (answer) {
+                            if (answer['success'] === true) {
+                                showAlert(answer['message'], 'success');
+                                setTimeout(function () {
+                                    document.location.href = ''
+                                }, 3500);
+                            }
+                        }
+                    });
+                },
+                cancel: function () {}
             }
         });
     });
@@ -210,7 +217,6 @@ class __TwigTemplate_b07905da32e982309f7880a5ccb9c6301d6e2faf317e4f020ebddbbf835
             }
         });
     });
-
     \$(\".change-count\").on('change', function () {
         let limit = \$(this).val();
         \$.ajax({
@@ -233,11 +239,11 @@ class __TwigTemplate_b07905da32e982309f7880a5ccb9c6301d6e2faf317e4f020ebddbbf835
 </html>";
     }
 
-    // line 63
+    // line 64
     public function block_content($context, array $blocks = [])
     {
         $macros = $this->macros;
-        // line 64
+        // line 65
         echo "        ";
     }
 
@@ -253,11 +259,11 @@ class __TwigTemplate_b07905da32e982309f7880a5ccb9c6301d6e2faf317e4f020ebddbbf835
 
     public function getDebugInfo()
     {
-        return array (  241 => 64,  237 => 63,  122 => 74,  111 => 65,  109 => 63,  92 => 48,  89 => 47,  86 => 46,  84 => 45,  38 => 1,);
+        return array (  247 => 65,  243 => 64,  112 => 66,  110 => 64,  93 => 49,  90 => 48,  87 => 47,  85 => 46,  38 => 1,);
     }
 
     public function getSourceContext()
     {
-        return new Source("", "template.twig", "C:\\os\\domains\\mvc2\\application\\Views\\template.twig");
+        return new Source("", "template.twig", "E:\\Programs\\OpenServer\\domains\\mvc2\\application\\Views\\template.twig");
     }
 }

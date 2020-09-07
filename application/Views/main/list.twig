@@ -1,18 +1,21 @@
 {% for task in dataList %}
     <li class="list-group-item d-flex justify-content-between lh-condensed">
+        <div class="col-md-1 text-center">
+            <p class="my-0">{{ loop.index }}</p>
+        </div>
         <div class="col-md-2 text-center">
             <p class="my-0">{{ task.name }}</p>
         </div>
         <div class="col-md-3 text-center">
-            <p class="my-0">{{ task.email }}</p>
+            <p class="my-0">{{ task.site }}</p>
         </div>
-        <div class="col-md-4 text-center">
+        <div class="col-md-3 text-center">
             <p class="my-0">{{ task.task }}</p>
         </div>
         <div class="col-md-2 text-center">
             <p class="my-0">
                 {% if task.status == 1 %}
-                    <i class="fa fa-check color-green px-1 pointer" aria-hidden="true" data-toggle="tooltip"
+                    <i class="fa fa-check text-success px-1 pointer" aria-hidden="true" data-toggle="tooltip"
                        data-placement="top"
                        title="Task complete"></i>
                 {% else %}
@@ -21,18 +24,18 @@
                        title="Task in progress"></i>
                 {% endif %}
 
-                {% if task.check_admin == 1 %}
-                    <i class="fa fa-pencil px-1 pointer" aria-hidden="true" data-toggle="tooltip" data-placement="top"
-                       title="Task updated by admin"></i>
+                {% if task.checkAdmin == 1 %}
+                    <i class="fa fa-pencil px-1 pointer tooltip-show" aria-hidden="true"
+                       title="Task has been updated"></i>
                 {% endif %}
             </p>
         </div>
         <div class="col-md-1 text-center">
             <p class="my-0">
                 {% if adm == 1 %}
-                    <a href="/add/edit/?id={{ task.id }}"><i class="fa fa-pencil-square-o" aria-hidden="true"
-                                                             data-toggle="tooltip" data-placement="top"
+                    <a href="/add/edit/?id={{ task.id }}"><i class="fa fa-pencil-square-o tooltip-show text-info"
                                                              title="Change task"></i></a>
+                    <a href="/add/del/?id={{ task.id }}" class="delete-task"><i class="fa fa-ban tooltip-show text-danger" title="Delete task"></i></a>
                 {% endif %}
             </p>
         </div>

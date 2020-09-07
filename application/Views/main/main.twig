@@ -2,13 +2,12 @@
 {% block content %}
     <div class="col-md-12 order-md-2">
         {% if adm == 1 %}
-
             <div class="card text-center">
                 <div class="card-header">
                     <div class="row">
                         <div class="col-md-3">
                             <form>
-                                <select class="form-control change-type" data-toggle="tooltip" data-placement="top"
+                                <select class="form-control change-type tooltip-show"
                                         title="Select the type of task list">
                                     <option disabled>Change style list</option>
                                     <option value="list" {% if typeList == 'list' %}selected{% endif %}>List
@@ -20,34 +19,46 @@
                         </div>
                         <div class="col-md-3">
                             <form>
-                                <select class="form-control change-count" data-toggle="tooltip" data-placement="top"
+                                <select class="form-control change-count tooltip-show"
                                         title="How many elements per page">
                                     <option disabled>Change per page</option>
-                                    <option value="3" {% if perPage == 3 %}selected{% endif %}>3</option>
-                                    <option value="5" {% if perPage == 5 %}selected{% endif %}>5</option>
+                                    <option value="3" {% if filter.limit == 3 %}selected{% endif %}>3</option>
                                     {% if typeList == 'list' %}
-                                    <option value="10" {% if perPage == 10 %}selected{% endif %}>10</option>
-                                    <option value="15" {% if perPage == 15 %}selected{% endif %}>15</option>
+                                        <option value="5" {% if filter.limit == 5 %}selected{% endif %}>5</option>
+                                        <option value="10" {% if filter.limit == 10 %}selected{% endif %}>10</option>
+                                        <option value="15" {% if filter.limit == 15 %}selected{% endif %}>15</option>
                                     {% endif %}
                                 </select>
                             </form>
                         </div>
-                        <div class="col-md-3">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text"><i class="fa fa-user" aria-hidden="true"></i></div>
+                        <div class="col-md-4">
+                            <form method="post">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text"><i class="fa fa-user" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                    <input type="text" class="form-control user-search" name="name" placeholder="Name"
+                                           value="{{ name }}">
+                                    {% if name != '' %}
+                                        <a href="/" type="submit" class="btn btn-secondary tooltip-show"
+                                           title="Close Filter"><i class="fa fa-times-circle"
+                                                                   aria-hidden="true"></i></a>
+                                    {% endif %}
+                                    <button type="submit" class="btn btn-secondary tooltip-show" title="Filter apply">
+                                        Search
+                                    </button>
                                 </div>
-                                <input type="text" class="form-control user-search" name="user" placeholder="Name">
-                            </div>
+                            </form>
                         </div>
-                        <div class="col-md-3">
-                            <button type="button" class="btn btn-outline-secondary" data-toggle="tooltip" data-placement="top"
+                        <div class="col-md-2">
+                            <button type="button" class="btn btn-outline-secondary" data-toggle="tooltip"
                                     title="Number of all tasks">
                                 <span class="badge badge-secondary badge-pill">{{ countDataRows }}</span>
                             </button>
-                            <button type="button" class="btn btn-outline-success" data-toggle="tooltip" data-placement="top"
+                            <button type="button" class="btn btn-outline-success" data-toggle="tooltip"
                                     title="Completed tasks">
-                                 <span class="badge badge-success badge-pill">{{ countStatusComplete }}</span>
+                                <span class="badge badge-success badge-pill">{{ countStatusComplete }}</span>
                             </button>
                         </div>
                     </div>
